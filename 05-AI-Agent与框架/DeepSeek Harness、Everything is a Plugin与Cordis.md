@@ -50,6 +50,68 @@ verified: 2026-08-16
 
 这里的“一切”包括模型适配器、工具、skills、会话、持久化、文件系统、沙箱、Agent loop、编排和 UI 等。
 
+## DeepSeek Harness 是用什么语言写的
+
+> [!summary] 直接答案
+> **DeepSeek Harness 的主体使用 TypeScript 编写，主要运行在 Node.js 上，并使用 pnpm 管理 monorepo（多包仓库）的依赖和构建。**仓库中也有 Rust 原生组件和 Python 相关目录，因此整个仓库不是百分之百只有 TypeScript。
+
+### TypeScript 是什么
+
+**TypeScript（简称 TS）**是“带静态类型系统的 JavaScript 超集”。“超集”表示：JavaScript 的大部分语法也是 TypeScript 的一部分，而 TypeScript 又增加了类型检查等能力。
+
+开发者通常编写 `.ts` 或 `.tsx` 文件，再由 TypeScript 编译器和构建工具检查、转换成 JavaScript，最后交给 Node.js 或浏览器执行。
+
+使用 TypeScript 对大型插件系统很有帮助，因为它可以在开发阶段检查：
+
+- 某个服务有没有这个方法；
+- 事件名和事件参数是否匹配；
+- 工具输入和返回值是否符合接口；
+- 插件依赖的能力是否使用正确类型。
+
+这与 Cordis 强调的“稳定服务接口”和“类型化事件”很契合。
+
+### TypeScript、Node.js 和 pnpm 分别负责什么
+
+| 名称 | 类型 | 在 DeepSeek Harness 中的作用 |
+|---|---|---|
+| TypeScript | 编程语言/类型系统 | 编写核心包、插件、服务接口和大量应用代码 |
+| JavaScript | 实际执行的主要语言 | TypeScript 构建后形成可由运行环境执行的代码 |
+| [[Node.js与pnpm|Node.js]] | JavaScript 运行环境 | 运行 dsh 的服务器端、命令行和构建工具 |
+| [[Node.js与pnpm|pnpm]] | 包管理器 | 安装依赖、管理多个 workspace 包、运行构建脚本 |
+
+所以“基于 Node.js”和“用 TypeScript 写”并不冲突：
+
+```text
+开发者编写 TypeScript
+        ↓ 类型检查、编译、打包
+生成 JavaScript
+        ↓
+由 Node.js 执行
+
+pnpm 负责管理这个过程所需的软件包和脚本
+```
+
+官方根目录 `package.json` 可以看到几个直接证据：
+
+- 项目声明了 Node.js 版本要求；
+- `packageManager` 指向 pnpm；
+- 构建命令调用 `tsc`（TypeScript Compiler，TypeScript 编译器）和 `tsdown`；
+- 仓库根目录存在多份 `tsconfig`，用于配置 TypeScript；
+- 项目使用 ESM（ECMAScript Modules）模块格式。
+
+### 为什么仓库里还会出现 Rust 和 Python
+
+大型工程常按任务选择语言，不需要强迫所有组件使用同一种语言。DeepSeek Harness 仓库当前还包含：
+
+- `native/`：原生辅助组件，例如与 Linux Landlock 沙箱有关的 Rust 工程；
+- `python/`：Python 相关的集成或支持代码；
+- 文档、YAML、JSON、Shell 脚本等配置和自动化文件。
+
+这不改变“主体是 TypeScript + Node.js”的判断。更准确的说法是：**它是以 TypeScript/Node.js 为核心的多语言工程。**
+
+> [!note] 不要从文件数量判断核心语言
+> 仓库可能有大量 Markdown 文档、生成文件或测试数据。判断项目技术栈时，应同时看入口、核心包、构建配置和运行时，而不只是数扩展名。
+
 ## “Everything is a Plugin”具体指什么
 
 普通软件常有一个地位特殊、难以替换的核心，其他扩展只能在少数扩展点周围工作。DeepSeek Harness 希望把产品的每一项能力都做成可组合插件，没有一个需要靠修改源码打补丁的“特权内核”。
@@ -128,6 +190,83 @@ DeepSeek Harness 的当前架构通过 Cordis 上下文、服务 key、依赖声
 > A Meta-Framework of Spatiotemporal Composability（时空可组合性的元框架）
 
 “元框架”表示它不是直接替你完成聊天、搜索或写代码，而是提供一套组织其他框架和插件的运行机制。
+
+DeepSeek Harness 官方文档更具体地说：Cordis 是以 **vendor（把依赖源码随项目一起引入）**方式放入 Harness 底层的插件框架。Cordis 自己也是以 TypeScript/Node.js 生态为主的工程，其构建使用 TypeScript 编译器和 esbuild。
+
+## Cordis 到底解决什么问题
+
+假设没有统一的插件框架，模型插件、工具插件、会话插件和 UI 可能直接互相引用：
+
+```text
+工具直接依赖某个模型实现
+UI 直接读取某个会话类的内部变量
+插件加载时到处注册监听器
+插件删除后旧监听器仍然存在
+```
+
+项目小时可能还能工作；项目变大后，换一个实现就可能牵动很多文件，插件重载还容易留下“幽灵状态”。
+
+Cordis 主要把下面几件事变成统一规则：
+
+1. **能力在哪里**：服务挂到稳定的 `ctx.<key>` 上；
+2. **插件依赖什么**：使用 `inject` 声明依赖；
+3. **什么时候启动**：依赖准备好后再激活插件；
+4. **插件怎样通信**：通过类型化事件或服务接口；
+5. **卸载时怎样清理**：注册产生的副作用必须能够撤销；
+6. **能力在哪个范围生效**：通过上下文和 realm 控制作用域与隔离。
+
+### 生活类比：商场物业系统
+
+把 DeepSeek Harness 想成一座商场：
+
+- 模型、搜索、文件系统、终端和 UI 是不同店铺；
+- Cordis 像商场的物业和基础设施规则；
+- `ctx.<key>` 像统一的水、电、网络接口；
+- `inject` 像店铺开业前申报“我需要电和网络”；
+- 事件系统像商场广播；
+- 可逆副作用像店铺退租时必须拆掉招牌、注销门禁并归还场地。
+
+Cordis 不替店铺卖商品，但保证店铺可以按规则接入、协作、替换和退出。
+
+## 模型、Harness 与 Cordis 的分层关系
+
+```mermaid
+flowchart TB
+    User["用户提出任务"] --> Harness["DeepSeek Harness：Agent 运行系统"]
+    Harness --> Model["大语言模型：理解与生成决策"]
+    Harness --> Tools["工具、文件、终端、搜索、会话和 UI"]
+    Cordis["Cordis：组织插件、依赖、事件和生命周期"] --> Harness
+```
+
+可以用一个不完全精确、但方便记忆的类比：
+
+| 层级 | 类比 | 主要职责 |
+|---|---|---|
+| 大语言模型 | 大脑 | 理解信息，生成文字或工具调用决定 |
+| DeepSeek Harness | 机器人的身体与工作系统 | 提供工具、记忆、权限、循环、沙箱和界面 |
+| Cordis | 组织身体部件的装配与生命周期机制 | 管理插件怎样接入、依赖、通信、替换和清理 |
+
+因此：
+
+- Cordis **不是** DeepSeek 大模型；
+- Cordis **不负责**直接回答用户问题；
+- Cordis **不是**数据库或单个工具；
+- DeepSeek Harness 使用 Cordis，但 Harness 还包含大量 Agent 领域的具体插件和产品功能；
+- Cordis 是通用元框架，不只在概念上服务于某一个模型。
+
+### “基于 Cordis”准确是什么意思
+
+这里的“基于”不是说 Cordis 完成了整个 DeepSeek Harness，而是说 Harness 的核心组装方式遵循 Cordis 的运行模型：
+
+```text
+Cordis 提供插件容器、服务、依赖、事件和清理机制
+                         ↓
+DeepSeek Harness 把模型、工具、会话、Agent loop、UI 等做成插件
+                         ↓
+不同 profile/preset 再把这些插件组合成可运行产品
+```
+
+类似于：Web 应用可以“基于某个 Web 框架”开发，但登录、订单和商品业务仍由应用自己实现。
 
 ## Cordis 的五个核心概念
 
@@ -222,6 +361,8 @@ Cordis 的目标之一，就是让这类生命周期关系成为框架管理的�
 
 [[Prompt Engineering与Loop Engineering|Loop Engineering]] 关注持续任务如何触发、验证、重试和停止。DeepSeek Harness 提供可以构成这类循环的运行部件，而 Cordis 让部件能够动态组合和撤销。
 
+如果把运行前、运行中和运行后连起来看：agent preset 负责预先装配模型、工具与权限，Agent loop 负责逐步推进，trajectory 则用于描述和复盘实际发生的消息、工具调用、结果与状态变化。详见 [[Preset与Agent Trajectory]]。
+
 可以粗略理解为：
 
 ```text
@@ -248,8 +389,10 @@ Loop Engineering：设计 Harness 怎样长期推进、验证和停止任务
 ## 参考资料
 
 - [DeepSeek Harness 官方 GitHub 仓库](https://github.com/deepseek-ai/deepseek-harness)
+- [DeepSeek Harness 根目录 package.json](https://github.com/deepseek-ai/deepseek-harness/blob/master/package.json)
 - [DeepSeek Harness 中文架构文档](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/architecture.zh.md)
 - [DeepSeek Harness：Cordis 中文入门](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/cordis-primer.zh.md)
 - [DeepSeek Harness：能力 Seams 与核心服务](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/capability-seams.zh.md)
 - [Cordis 官方仓库](https://github.com/cordiverse/cordis)
+- [Cordis 根目录 package.json](https://github.com/cordiverse/cordis/blob/main/package.json)
 - [Cordis 论文：A Programming Paradigm for Spatiotemporal Composability](https://github.com/cordiverse/paper)
