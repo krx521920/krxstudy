@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01-软件开发基础/TCP、HTTP、HTTPS与WebSocket.md",
+                "file": "05-AI-Agent与框架/DeepSeek Harness、Everything is a Plugin与Cordis.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "TCP、HTTP、HTTPS与WebSocket"
+              "title": "DeepSeek Harness、Everything is a Plugin与Cordis"
             }
           }
         ]
@@ -188,20 +188,24 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
-    "01-软件开发基础/SDK与API.md",
+    "01-软件开发基础/TypeScript与JavaScript.md",
+    "02-Web前端与界面/Webpack与HMR.md",
+    "05-AI-Agent与框架/DI容器、Pi与轻量钩子方案.md",
+    "05-AI-Agent与框架/DeepSeek Harness、Everything is a Plugin与Cordis.md",
+    "05-AI-Agent与框架/Preset与Agent Trajectory.md",
+    "05-AI-Agent与框架/Prompt Engineering与Loop Engineering.md",
+    "03-Web后端与数据库/Django.md",
+    "04-AI应用基础/RAG、Naive RAG与GraphRAG.md",
+    "03-Web后端与数据库/ORM.md",
     "01-软件开发基础/TCP、HTTP、HTTPS与WebSocket.md",
+    "01-软件开发基础/SDK与API.md",
     "02-Web前端与界面/WebView.md",
     "02-Web前端与界面/HTML.md",
     "00-导航/计算机知识库总索引.md",
     "04-AI应用基础/LangChain.md",
-    "05-AI-Agent与框架/Prompt Engineering与Loop Engineering.md",
-    "05-AI-Agent与框架/DeepSeek Harness、Everything is a Plugin与Cordis.md",
     "AGENTS.md",
-    "04-AI应用基础/RAG、Naive RAG与GraphRAG.md",
     "05-AI-Agent与框架",
     "04-AI应用基础",
-    "03-Web后端与数据库/ORM.md",
-    "03-Web后端与数据库/Django.md",
     "03-Web后端与数据库",
     "02-Web前端与界面/渲染逻辑.md",
     "02-Web前端与界面/CSS.md",
