@@ -352,6 +352,139 @@ MCP 的协议版本会影响连接和消息行为。
 
 ---
 
+## 近期 MCP 会被取代吗
+
+> [!summary] 先给结论
+> **截至 2026-08-17，没有可靠证据表明 MCP 整体近期要被某一个协议取代。更准确的说法是：MCP 正在快速升级，旧版内部机制被新机制替换，同时 A2A、Agent Skills、直接 API/CLI 等技术在不同层次与它分工或竞争。**
+
+### 为什么会出现“MCP 要被取代”的说法
+
+这类说法通常把几件不同的事混在了一起。
+
+#### 原因 1：新版 MCP 对旧版做了较大改动
+
+2026-07-28 规范对核心通信方式进行了明显调整：
+
+| 旧机制或特性 | 当前变化 | 是否代表 MCP 整体消失 |
+|---|---|---|
+| `initialize/initialized` 握手 | 被无状态、自包含请求和 `server/discover` 取代 | 否 |
+| `Mcp-Session-Id` 协议会话 | 新核心不再依赖它 | 否 |
+| Roots、Sampling、Logging | 已进入弃用周期 | 否 |
+| 旧 HTTP+SSE Transport | 已弃用，迁移到 Streamable HTTP | 否 |
+| 部分长任务能力 | 移到 Tasks 扩展继续演进 | 否 |
+
+所以准确表述应是：
+
+```text
+旧版 MCP 的部分机制正在被替换
+                    ≠
+MCP 协议整体正在被替换
+```
+
+官方不仅在 2026 年发布了新规范，也公布了 Transport Scalability（传输可扩展性）、Agent Communication（Agent 通信）、治理成熟和企业可用性等路线图。这更像一个仍在积极演进的协议，而不是已宣布停止的项目。
+
+#### 原因 2：A2A 发展很快
+
+**A2A（Agent2Agent Protocol，智能体到智能体协议）**负责不同 Agent 之间的发现、委派、协作和长任务交流。
+
+它和 MCP 的主要边界是：
+
+```text
+MCP：Agent / Host ↔ 工具、API、数据和资源
+A2A：Agent ↔ 另一个相对独立的 Agent
+```
+
+例如旅行规划系统可能这样组合：
+
+```mermaid
+flowchart LR
+    Main["总旅行 Agent"] -->|"A2A：委派订票任务"| Flight["机票 Agent"]
+    Main -->|"A2A：委派酒店任务"| Hotel["酒店 Agent"]
+    Flight -->|"MCP：查询航班工具"| FlightAPI["航班 API"]
+    Hotel -->|"MCP：查询酒店工具"| HotelAPI["酒店 API"]
+```
+
+A2A 官方文档明确将两者描述为互补协议，而不是竞争替代关系：一个 Agent 内部可以用 MCP 操作工具，对外再用 A2A 与其他 Agent 协作。
+
+#### 原因 3：Agent Skills 越来越流行
+
+**Agent Skill（Agent 技能）**通常是一组可复用的任务说明、脚本和参考资料，用来教 Agent“怎样完成某类工作”。
+
+```text
+Skill：教 Agent 怎样做
+MCP：让 Agent 在运行时怎样连接资料和工具
+```
+
+例如“制作财务报告”Skill 可以规定分析步骤，同时调用数据库 MCP Tool 获取真实数据。二者可以组合，并不是必须二选一。
+
+#### 原因 4：有些项目更适合直接 API 或 CLI
+
+如果一个应用只有一个固定工具，直接调用函数、[[SDK与API|API]] 或 **CLI（Command-Line Interface，命令行界面）**可能更简单：
+
+- 依赖层更少；
+- 调试路径更直接；
+- 不需要协议发现和版本兼容；
+- 可以完全按照内部需求设计类型与错误处理。
+
+这说明 MCP 不是所有项目的最佳答案，但不能据此推导“MCP 将被全面取代”。HTTP、数据库驱动和插件系统也都长期与直接函数调用共存。
+
+### MCP、A2A 和底层 API 怎样分层
+
+可以先用三层结构理解：
+
+```mermaid
+flowchart TD
+    A2A["A2A：Agent 与 Agent 协作"]
+    MCP["MCP：Agent/Host 使用工具和资料"]
+    API["API / CLI / 数据库驱动：操作真实系统"]
+    System["GitHub、日历、数据库、企业系统"]
+
+    A2A --> MCP
+    MCP --> API
+    API --> System
+```
+
+不是所有系统都必须同时有三层，但它能说明它们解决的不是同一个问题。
+
+### 哪些变化才可能真正威胁 MCP
+
+下面属于未来可能性，而不是已经发生的事实：
+
+- 主要 AI Host 不再支持 MCP，改为另一套互不兼容的协议；
+- 另一标准在工具发现、授权、安全、性能和生态上形成明显统一优势；
+- 各厂商只保留自己的私有 Connector 接口；
+- MCP 长期无法解决安全、工具质量、版本兼容和部署成本问题；
+- 开发者普遍发现直接 API、CLI 或代码执行比 MCP Server 更可靠、简单。
+
+截至核对日期，观察到的事实反而是：MCP 刚发布 2026-07-28 新规范，官方路线图仍在推进，MCP Apps 和 Tasks 等扩展继续增加能力，GitHub MCP Server 等实现也在跟进新版本。
+
+### 我的判断
+
+> [!note] 基于当前资料的推断
+> **短期内更可能发生的是“MCP 从热点概念变成底层基础设施”，而不是突然消失。** 用户以后可能只看到“连接器”“工具”“App”或“数据源”，看不到 MCP 这个名称，但底层仍可能使用 MCP。
+
+中长期不能断言任何协议永远不会被替代。MCP 仍有真实问题：
+
+- 安装第三方 Server 有供应链和本机执行风险；
+- 不同 Server 的工具质量差异很大；
+- 工具过多会增加模型选择成本和上下文负担；
+- Host 对版本、授权和扩展的支持不完全一致；
+- 简单集成使用 MCP 可能比直接 API 更复杂。
+
+因此合理态度不是“全部押注 MCP”，也不是“马上抛弃 MCP”，而是根据边界选择：
+
+| 需求 | 优先考虑 |
+|---|---|
+| 调用数据库、文件、GitHub 等明确工具 | MCP 或直接 API |
+| 多个独立 Agent 需要委派、协商、持续任务 | A2A |
+| 教 Agent 一套可复用工作方法 | Agent Skills |
+| 单个程序里的简单固定函数 | 直接函数/库 |
+| 一个固定外部服务，且没有跨 Host 复用需求 | SDK/API/CLI 可能更简单 |
+
+初学者目前不用因为“可能被取代”而停止学习 MCP。应重点学习它背后的稳定概念：协议、Client/Server、Tool Schema、能力发现、权限边界和外部输入安全。即使未来换协议，这些知识仍然适用。
+
+---
+
 ## MCP、API、SDK 分别是什么
 
 | 概念 | 核心问题 | 示例 |
@@ -622,6 +755,12 @@ MCP Server（提供 Resources / Prompts / Tools）
 - [MCP 2026-07-28：Transports](https://modelcontextprotocol.io/specification/2026-07-28/basic/transports)
 - [MCP 官方安全最佳实践](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices)
 - [MCP 官方博客：2026-07-28 规范](https://blog.modelcontextprotocol.io/posts/2026-07-28/)
+- [MCP 官方：2026 Roadmap](https://blog.modelcontextprotocol.io/posts/2026-mcp-roadmap/)
+- [MCP SEP-2577：弃用 Roots、Sampling 和 Logging](https://modelcontextprotocol.io/seps/2577-deprecate-roots-sampling-and-logging)
+- [MCP 官方：Extensions Overview](https://modelcontextprotocol.io/extensions/overview)
+- [A2A 官方：A2A and MCP](https://github.com/a2aproject/A2A/blob/main/docs/topics/a2a-and-mcp.md)
+- [A2A 官方：A2A v1.0，Complementary to MCP](https://a2a-protocol.org/latest/announcing-1.0/)
+- [GitHub Changelog：GitHub MCP Server 支持 2026-07-28 规范](https://github.blog/changelog/2026-07-23-github-mcp-server-supports-the-next-mcp-specification/)
 - [Anthropic：Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol)
 - [Anthropic：MCP 捐赠给 Agentic AI Foundation](https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation)
 - [MCP 官方 GitHub 组织与 SDK](https://github.com/modelcontextprotocol)
