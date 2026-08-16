@@ -11,10 +11,14 @@
             "id": "644ea29bc0bda851",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "05-AI-Agent与框架/DeepSeek Harness、Everything is a Plugin与Cordis.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "DeepSeek Harness、Everything is a Plugin与Cordis"
             }
           }
         ]
@@ -184,6 +188,24 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
+    "AGENTS.md",
+    "00-导航/计算机知识库总索引.md",
+    "05-AI-Agent与框架/DeepSeek Harness、Everything is a Plugin与Cordis.md",
+    "04-AI应用基础/RAG、Naive RAG与GraphRAG.md",
+    "05-AI-Agent与框架/Prompt Engineering与Loop Engineering.md",
+    "05-AI-Agent与框架",
+    "04-AI应用基础/LangChain.md",
+    "04-AI应用基础",
+    "03-Web后端与数据库/ORM.md",
+    "03-Web后端与数据库/Django.md",
+    "03-Web后端与数据库",
+    "02-Web前端与界面/渲染逻辑.md",
+    "02-Web前端与界面/CSS.md",
+    "02-Web前端与界面/Toast提示.md",
+    "02-Web前端与界面",
+    "01-软件开发基础/SDK与API.md",
+    "01-软件开发基础",
+    "00-导航",
     "未命名.md",
     "未命名.canvas",
     "krxstudy/README.md",
