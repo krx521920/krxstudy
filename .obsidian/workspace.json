@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02-Web前端与界面/Webpack与HMR.md",
+                "file": "01-软件开发基础/Node.js与pnpm.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Webpack与HMR"
+              "title": "Node.js与pnpm"
             }
           }
         ]
@@ -188,9 +188,10 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
+    "02-Web前端与界面/Webpack与HMR.md",
+    "01-软件开发基础/Index的常见含义.md",
     "05-AI-Agent与框架/DeepSeek Harness、Everything is a Plugin与Cordis.md",
     "01-软件开发基础/TypeScript与JavaScript.md",
-    "02-Web前端与界面/Webpack与HMR.md",
     "05-AI-Agent与框架/DI容器、Pi与轻量钩子方案.md",
     "05-AI-Agent与框架/Preset与Agent Trajectory.md",
     "05-AI-Agent与框架/Prompt Engineering与Loop Engineering.md",
