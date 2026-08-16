@@ -454,6 +454,7 @@ Webpack 不是唯一选择。Vite、Rollup、esbuild、Rspack、Parcel 等也能
 
 - [[HTML]]、[[CSS]]：Webpack 构建后生成或组织浏览器加载的页面资源。
 - [[渲染逻辑]]：HMR 更新模块后，框架或浏览器重新计算并更新界面。
+- [[TypeScript与JavaScript]]：Webpack 可通过 Loader 或其他工具链处理 TypeScript 源码。
 - [[Node.js与pnpm]]：Webpack 通常由 Node.js 运行并由 pnpm 管理。
 - [[TCP、HTTP、HTTPS与WebSocket]]：开发服务器通过网络向浏览器提供资源和更新通知。
 - [[DI容器、Pi与轻量钩子方案]]：Webpack Plugin 通过编译器 Hook 扩展构建过程。

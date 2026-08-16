@@ -57,7 +57,7 @@ verified: 2026-08-16
 
 ### TypeScript 是什么
 
-**TypeScript（简称 TS）**是“带静态类型系统的 JavaScript 超集”。“超集”表示：JavaScript 的大部分语法也是 TypeScript 的一部分，而 TypeScript 又增加了类型检查等能力。
+**[[TypeScript与JavaScript|TypeScript（简称 TS）]]**是“带静态类型系统的 JavaScript 超集”。“超集”表示：JavaScript 的大部分语法也是 TypeScript 的一部分，而 TypeScript 又增加了类型检查等能力。
 
 开发者通常编写 `.ts` 或 `.tsx` 文件，再由 TypeScript 编译器和构建工具检查、转换成 JavaScript，最后交给 Node.js 或浏览器执行。
 

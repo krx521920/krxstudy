@@ -237,6 +237,7 @@ Git 到达提交前时刻
 
 ## 关联概念
 
+- [[TypeScript与JavaScript]]：TypeScript 检查并转换后，通常生成由 Node.js 或浏览器执行的 JavaScript。
 - [[HTML]]、[[CSS]]：前端源码常由 Node.js 工具链构建，但 HTML/CSS 本身不等于 Node.js。
 - [[SDK与API|API]]：Node.js 后端可以提供或调用 API。
 - [[Git Hook与自动化检查]]：常用 pnpm 运行自动检查。
@@ -248,4 +249,3 @@ Git 到达提交前时刻
 - [pnpm 官方文档：Motivation](https://pnpm.io/motivation)
 - [pnpm 官方文档：CLI commands](https://pnpm.io/pnpm-cli)
 - [pnpm 官方文档：Symlinked node_modules structure](https://pnpm.io/symlinked-node-modules-structure)
-
