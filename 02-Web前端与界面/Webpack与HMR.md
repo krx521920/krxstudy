@@ -452,6 +452,7 @@ Webpack 不是唯一选择。Vite、Rollup、esbuild、Rspack、Parcel 等也能
 
 ## 关联概念
 
+- [[Index的常见含义]]：`index.js` 和 `index.ts` 常被约定为入口或聚合文件，但文件名不是语言强制规定的。
 - [[HTML]]、[[CSS]]：Webpack 构建后生成或组织浏览器加载的页面资源。
 - [[渲染逻辑]]：HMR 更新模块后，框架或浏览器重新计算并更新界面。
 - [[TypeScript与JavaScript]]：Webpack 可通过 Loader 或其他工具链处理 TypeScript 源码。

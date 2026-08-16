@@ -498,6 +498,7 @@ flowchart LR
 
 ## 关联概念
 
+- [[Index的常见含义]]：数组下标和 `index.ts` 入口/聚合文件中的 Index 含义。
 - [[Node.js与pnpm]]：运行 JavaScript，安装和执行 TypeScript 工具。
 - [[Webpack与HMR]]：构建和打包 TypeScript/JavaScript 项目。
 - [[SDK与API]]：可以用类型描述 API 请求和响应，但外部数据仍需运行时验证。

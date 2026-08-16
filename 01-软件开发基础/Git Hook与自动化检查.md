@@ -156,6 +156,7 @@ Git Hook 属于 Git。GitHub Actions、GitLab CI 等是远程平台提供的自�
 
 ## 关联概念
 
+- [[Index的常见含义|Git Index]]：`git add` 把准备提交的内容放进暂存区。
 - [[Node.js与pnpm]]：前端和 Node.js 项目中，Hook 经常调用 pnpm 脚本。
 - [[CMD、Bash与PowerShell]]：Hook 文件需要由某种命令解释器执行。
 - [[SDK与API|API]]：服务器端自动化平台通常也通过 API 与 Git 托管服务交流。
@@ -164,4 +165,3 @@ Git Hook 属于 Git。GitHub Actions、GitLab CI 等是远程平台提供的自�
 
 - [Git 官方 githooks 文档](https://git-scm.com/docs/githooks)
 - [Git 官方 core.hooksPath 配置文档](https://git-scm.com/docs/git-config#Documentation/git-config.txt-corehooksPath)
-

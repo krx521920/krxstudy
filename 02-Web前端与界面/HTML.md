@@ -184,6 +184,12 @@ HTML 表达能力更完整，Markdown 更适合快速写作。
 6. DOM 基本概念；
 7. 再学习 [[CSS]] 和 JavaScript。
 
+## 关联概念
+
+- [[Index的常见含义|index.html]]：Web 服务器常把它作为一个目录的默认页面，但这属于配置惯例，并非 HTML 语法要求。
+- [[CSS]]：控制 HTML 内容的样式与布局。
+- [[渲染逻辑]]：浏览器怎样把 HTML、CSS 和 JavaScript 变成屏幕上的界面。
+
 ## 参考资料
 
 - [MDN：HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
