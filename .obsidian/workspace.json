@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01-软件开发基础/Node.js与pnpm.md",
+                "file": "01-软件开发基础/CMD、Bash与PowerShell.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Node.js与pnpm"
+              "title": "CMD、Bash与PowerShell"
             }
           }
         ]
@@ -188,6 +188,8 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
+    "01-软件开发基础/Node.js与pnpm.md",
+    "05-AI-Agent与框架/MCP模型上下文协议.md",
     "02-Web前端与界面/Webpack与HMR.md",
     "01-软件开发基础/Index的常见含义.md",
     "05-AI-Agent与框架/DeepSeek Harness、Everything is a Plugin与Cordis.md",
