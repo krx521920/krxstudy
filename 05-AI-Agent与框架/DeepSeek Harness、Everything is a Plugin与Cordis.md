@@ -193,6 +193,8 @@ DeepSeek Harness 的当前架构通过 Cordis 上下文、服务 key、依赖声
 
 DeepSeek Harness 官方文档更具体地说：Cordis 是以 **vendor（把依赖源码随项目一起引入）**方式放入 Harness 底层的插件框架。Cordis 自己也是以 TypeScript/Node.js 生态为主的工程，其构建使用 TypeScript 编译器和 esbuild。
 
+如果想把 Cordis 与传统依赖注入、应用内 Hook 和另一个 Agent Harness Pi 横向比较，参见 [[DI容器、Pi与轻量钩子方案]]。
+
 ## Cordis 到底解决什么问题
 
 假设没有统一的插件框架，模型插件、工具插件、会话插件和 UI 可能直接互相引用：
