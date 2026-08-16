@@ -16,8 +16,8 @@ tags:
   - Pi
   - Cordis
 created: 2026-08-16
-updated: 2026-08-16
-verified: 2026-08-16
+updated: 2026-08-17
+verified: 2026-08-17
 ---
 
 # DI 容器、Pi 与轻量钩子方案
@@ -353,6 +353,7 @@ DeepSeek Harness：用 Cordis 组织起来的 Agent Harness
 
 ## 关联概念
 
+- [[MCP模型上下文协议]]：MCP 解决跨程序的标准通信；DI、Hook 和 Cordis 主要解决程序内部依赖、事件与插件生命周期。
 - [[DeepSeek Harness、Everything is a Plugin与Cordis]]：Cordis 和 DeepSeek Harness 的完整架构说明。
 - [[Git Hook与自动化检查]]：Git 生命周期中的外部脚本钩子。
 - [[Prompt Engineering与Loop Engineering]]：Agent Hook 常用于观察或拦截循环中的步骤。

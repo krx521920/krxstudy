@@ -8,8 +8,8 @@ tags:
   - Agent
   - 框架
 created: 2026-08-16
-updated: 2026-08-16
-verified: 2026-08-16
+updated: 2026-08-17
+verified: 2026-08-17
 ---
 
 # LangChain
@@ -156,6 +156,13 @@ LangChain（组织模型、工具、流程）
 5. Embedding、向量搜索和 [[RAG、Naive RAG与GraphRAG|基础 RAG]]。
 
 然后再用 LangChain 重新实现一个你已经理解的小项目。这样你会知道框架替你做了什么，而不是只会复制代码。
+
+## 关联概念
+
+- [[MCP模型上下文协议]]：MCP 负责 Host 与外部资料/工具程序之间的标准通信；LangChain 负责在应用内部组织模型、状态、工具和 Agent 流程，两者位于不同层次。
+- [[SDK与API]]：LangChain 常通过模型 SDK 或 Web API 访问模型服务。
+- [[Prompt Engineering与Loop Engineering]]：LangChain 可承载 Prompt 和 Agent loop，但不会自动保证循环可靠。
+- [[RAG、Naive RAG与GraphRAG]]：LangChain 提供构建检索流程的组件，RAG 是具体方法。
 
 ## 参考资料
 

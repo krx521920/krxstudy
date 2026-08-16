@@ -13,8 +13,8 @@ tags:
   - 检索
   - 知识图谱
 created: 2026-08-16
-updated: 2026-08-16
-verified: 2026-08-16
+updated: 2026-08-17
+verified: 2026-08-17
 ---
 
 # RAG、Naive RAG 与 GraphRAG
@@ -276,6 +276,12 @@ Naive RAG 之后的常见增强包括：
 5. 学会观察检索结果，而不只看最终答案；
 6. 加入混合检索、重排序和评估；
 7. 真正遇到多跳关系或全局总结问题后，再学习 Graph RAG。
+
+## 关联概念
+
+- [[MCP模型上下文协议]]：MCP 可以向 AI Host 提供知识库 Resource 或检索 Tool，但不会自动完成 RAG 的切分、Embedding、召回和评估。
+- [[LangChain]]：可以组织文档加载、Retriever、模型和 Agent 等 RAG 组件。
+- [[Index的常见含义]]：理解搜索索引、向量索引和“离线索引”阶段的不同含义。
 
 ## 参考资料
 

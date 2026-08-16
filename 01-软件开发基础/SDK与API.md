@@ -7,7 +7,7 @@ tags:
   - 软件开发基础
   - 接口
 created: 2026-08-16
-updated: 2026-08-16
+updated: 2026-08-17
 ---
 
 # SDK 与 API
@@ -115,6 +115,7 @@ SDK 并没有创造新的天气数据，它只是让已有 API 更容易、安�
 
 ## 和其他笔记的关系
 
+- [[MCP模型上下文协议]] 规定 AI Host 怎样发现和调用外部 Resources、Prompts 与 Tools；MCP Server 常在内部继续调用具体业务 API。
 - [[LangChain]] 本身可以看作构建 AI 应用的一组框架与库，也会调用不同模型厂商的 API。
 - [[Django]] 可以用来开发自己的 Web API。
 - [[DeepSeek Harness、Everything is a Plugin与Cordis]] 中，插件可以通过稳定接口向系统提供能力。
