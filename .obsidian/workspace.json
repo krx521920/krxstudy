@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01-软件开发基础/CMD、Bash与PowerShell.md",
+                "file": "05-AI-Agent与框架/DI容器、Pi与轻量钩子方案.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CMD、Bash与PowerShell"
+              "title": "DI容器、Pi与轻量钩子方案"
             }
           }
         ]
@@ -188,11 +188,13 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
+    "05-AI-Agent与框架/DeepSeek Harness、Everything is a Plugin与Cordis.md",
+    "01-软件开发基础/Git Hook与自动化检查.md",
+    "01-软件开发基础/CMD、Bash与PowerShell.md",
     "01-软件开发基础/Node.js与pnpm.md",
     "05-AI-Agent与框架/MCP模型上下文协议.md",
     "02-Web前端与界面/Webpack与HMR.md",
     "01-软件开发基础/Index的常见含义.md",
-    "05-AI-Agent与框架/DeepSeek Harness、Everything is a Plugin与Cordis.md",
     "01-软件开发基础/TypeScript与JavaScript.md",
     "05-AI-Agent与框架/DI容器、Pi与轻量钩子方案.md",
     "05-AI-Agent与框架/Preset与Agent Trajectory.md",
@@ -219,8 +221,6 @@
     "未命名.md",
     "未命名.canvas",
     "krxstudy/README.md",
-    "README.md",
-    "尝试.md",
     "新建 文本文档.txt",
     "新建文件夹"
   ]
