@@ -11,8 +11,8 @@ tags:
   - Prompt
   - LoopEngineering
 created: 2026-08-16
-updated: 2026-08-16
-verified: 2026-08-16
+updated: 2026-08-17
+verified: 2026-08-17
 ---
 
 # Prompt Engineering 与 Loop Engineering
@@ -99,6 +99,64 @@ flowchart LR
 - **Stop condition**：成功、失败、阻塞或需要人工时如何停止。
 - **Human gate**：付款、删除、发布等高风险动作前由人确认。
 
+### DeepSeek Harness 当前怎样区分 Turn 和 Step
+
+当前官方架构中：
+
+- **Step（步骤）**：一次模型请求，加上该次请求发起的工具调用；
+- **Turn（轮次）**：从领取一批输入开始，到不再欠下任何工具、steering 或后续工作为止，可以包含多个 Step。
+
+```text
+一个 Turn
+├── Step 1：请求模型 → 调用工具
+├── Step 2：把工具结果交给模型 → 再调用工具
+└── Step 3：模型给出最终回复
+```
+
+因此“一次用户发言”不一定只产生一次模型请求。
+
+### `concludesTurn`：工具也可以声明本轮结束
+
+某些工具结果可以携带 `concludesTurn: true`，表示该工具已经给出终止当前轮次的决定，不必再让模型补一句“完成了”。
+
+但已经提交的 next-step 上下文或同时到达的 steering 仍会先被处理，不能用这个标记跳过已经欠下的工作。
+
+### `agent/turn-stopping`：真正关闭前的最后检查点
+
+当模型没有新的工具调用、inbox 也没有待处理 steering 时，循环会在提交 `turn/end` 前触发 `agent/turn-stopping`。
+
+插件可以在这个时刻调用 `agent.steer(...)` 添加下一步骤输入：
+
+```text
+准备结束
+→ turn-stopping 插件检查验收结果
+→ 未通过：steer 一条“请修复失败测试”
+→ 同一个 Turn 继续下一个 Step
+```
+
+如果没有新的 steering，Turn 才真正结束。这让“什么时候算完成”可以由测试、目标管理或 Hook 插件扩展，而不必全部写死在核心循环中。
+
+### `max-tokens` 为什么是粘性的
+
+如果某个 Step 因达到模型最大输出 token 而被截断，即使后续 Step 正常完成，整个 Turn 的结束原因仍保留 `max-tokens`。
+
+这样日志和评测不会把“本轮曾被截断”误报为完全正常完成。
+
+### 当前没有内置的无限循环预算保护
+
+截至核对日期，官方 `dsh-agent-loop` 文档明确写着没有内置 Turn Budget：工具调用或 steering 可以让当前 Turn 继续。
+
+因此真实部署仍需通过插件或外部策略设置：
+
+- 最大时间；
+- 最大工具调用数；
+- 最大成本；
+- 取消条件；
+- 重复调用检测；
+- 需要人工接管的条件。
+
+“循环可以继续”不等于“应该无限继续”。
+
 ## Prompt、Context、Harness、Loop 四层区别
 
 | 层次 | 主要优化对象 | 关键问题 |
@@ -165,9 +223,13 @@ Loop 的价值不是“让模型无限尝试”，而是让每次尝试都有真
 
 - [[LangChain]] 提供构建 Agent Harness 的高层能力。
 - [[DeepSeek Harness、Everything is a Plugin与Cordis]] 把模型、工具、循环和权限等都设计为可组合插件。
+- [[Agent工具运行时：执行流水线、并发调度与Code Mode]] 解释一次工具调用怎样经过审批、Guard 和调度。
+- [[Agent评测：上下文成本、轨迹与独立验收]] 说明怎样评价循环的正确性、安全性和成本。
 - [[RAG、Naive RAG与GraphRAG]] 是给模型提供外部知识的一类上下文与检索方案。
 
 ## 参考资料
 
 - [IBM：What is loop engineering?](https://www.ibm.com/think/topics/loop-engineering)
 - [arXiv：Stop Hand-Holding Your Coding Agent—Engineering the Loops that Replace Step-by-Step Prompting](https://arxiv.org/abs/2607.00038)
+- [DeepSeek Harness：Agent Loop](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/agent-loop/README.zh.md)
+- [DeepSeek Harness：Agent 生命周期](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/agent-lifecycle.zh.md)

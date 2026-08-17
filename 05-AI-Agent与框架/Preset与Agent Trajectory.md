@@ -14,8 +14,8 @@ tags:
   - Preset
   - Trajectory
 created: 2026-08-16
-updated: 2026-08-16
-verified: 2026-08-16
+updated: 2026-08-17
+verified: 2026-08-17
 ---
 
 # Preset 与 Agent Trajectory
@@ -93,6 +93,78 @@ flowchart TD
 根据 DeepSeek Harness 当前架构，Profile 位于 Harness home，描述启动时叠加哪些 bundle 和 patch；Agent preset 则更靠近具体会话的能力集合。
 
 Prompt 可能是 preset 的一部分，但 preset 通常不只有 prompt。
+
+### Profile 的配置层怎样叠加
+
+当前 DeepSeek Harness 会把运行中的产品组装成一棵 Cordis 插件树，大致按下面顺序叠加：
+
+```text
+Profile 列出的 Bundle
+        ↓
+Profile 自己的 cordis.patch.yml
+        ↓
+Harness Home 级 Patch
+        ↓
+命令行 --patch Overlay
+```
+
+- **Bundle（组合包）**：一组可分发的 Cordis 配置和挂载代码；
+- **Patch（补丁配置）**：按稳定 id 替换条目配置或插入新条目；
+- **Overlay（覆盖层）**：在现有组合之上继续叠加的配置。
+
+因此，调试时不能只看某一份 YAML，还要看所有层叠加后的结果。当前官方提供 `--dump-config` 查看实际配置树；具体命令格式应以当时版本的官方文档为准。
+
+### Preset 是“常驻组装”，不是每个会话复制一棵插件树
+
+当前 Agent Preset 是一个目录，核心文件是 `agent.cordis.yml`。同一份 Preset 在进程内会建立常驻 Scope：
+
+```mermaid
+flowchart TD
+    Global["Global：进程全局层"] --> Preset["Preset：常驻工具/提示词/投影"]
+    Preset --> A["Agent A Scope"]
+    Preset --> B["Agent B Scope"]
+    A --> SubA["Agent A 的子 Agent"]
+```
+
+多个会话可以共享同一份插件实例，但插件内部仍应按 Session/Agent key 隔离各自状态。这样可以避免每创建一个会话就重新解析和加载全部 Preset 插件。
+
+当前 Agent 视图按以下父链解析注册项：
+
+```text
+Agent → Preset → Global
+```
+
+近处的同名项遮蔽远处的项。子 Agent 通过 `composeFrom()` 认父到父 Agent 正在使用的常驻 Preset，而不是重新按 id 挂载一遍。
+
+> [!important] Scope 不是沙箱
+> 这条父链管理工具、提示词等注册项的可见性和所有权，不自动阻止受信任的同进程插件直接访问文件、网络或进程。详见 [[Cordis运行时机制：Fiber、Effect与Scope#Scope 不是安全沙箱]]。
+
+### Preset 的发现、优先级与健康检查
+
+当前实现会扫描多个 Preset 根目录：
+
+- 目录 id 需要符合规定格式；
+- 必须存在可解析的 `agent.cordis.yml`；
+- 同名 id 由靠前的根目录胜出；
+- 损坏 Preset 会带着原因列出，而不是悄悄消失；
+- 挂载时会拒绝永远等不到依赖的插件行；
+- Preset 自带服务如果错误发布到根 realm，也会被拒绝；
+- 挂载失败时，会话创建应整体回滚，避免留下组装一半的 Agent。
+
+Preset 引用的插件拥有与插件代码相应的权限。`user` 标签方便界面披露信任来源，但标签本身不等于强制安全隔离。
+
+### 会话能不能中途切换 Preset
+
+架构会通过 `agent-preset/selected` 会话事件记录选择变化，因此解析会话实际 Preset 时，不能只读取创建时的 Header。
+
+但是截至核对日期，当前产品规则只允许**尚未产生任何内容的空白 Agent**重新组装。已经运行过的会话不能随意切换，原因是旧历史可能含有新 Preset 无法执行的工具调用。
+
+```text
+空白会话切换 → 可以重新组装；失败时恢复旧组装
+已有历史切换 → 当前产品拒绝
+```
+
+这比“理论上事件日志能表示切换，所以任何时候都能切”更准确。
 
 ## Preset 的优点和风险
 
@@ -174,6 +246,79 @@ turn/start
 
 官方还强调“模型可见即已记录”：到达模型请求的内容必须能从会话日志重建。这样 fork（分叉会话）、恢复、transcript、遥测和持久化可以从同一事件流派生。
 
+### SessionEvent 是事件溯源的真源
+
+**Event Sourcing（事件溯源）**不是只保存“当前状态”，而是保存导致当前状态的一连串事实，再通过投影计算需要的视图。
+
+当前 `Session` 是仅追加真源，原始日志之上维护给模型使用的 surface（表层投影）：
+
+```mermaid
+flowchart LR
+    Log["仅追加 SessionEvent 日志"] --> Model["deriveMessages：模型历史"]
+    Log --> UI["UI/Transcript"]
+    Log --> Replay["恢复与回放"]
+    Log --> Fork["Fork 子会话"]
+    Log --> Telemetry["遥测和评测"]
+```
+
+运行时不变量会检查：
+
+- 事件序号是否单调递增；
+- turn/step 是否正确闭合；
+- 同一步骤中的工具调用和结果是否配对；
+- 请求 Header、系统提示词、工具 schema 和消息历史能否按规则重建。
+
+这就是“模型可见即已记录”的工程含义：新插件如果给模型增加了持久可见输入，也应设计对应会话事件和投影，而不是只修改进程内临时变量。
+
+### 仅追加不等于模型永远看到所有旧内容
+
+原始事件不会被删除，但 surface 可以通过 `replace` 操作遮蔽未来请求中的旧条目，例如上下文压缩用摘要替换一段历史。
+
+```text
+原始日志：仍保留旧消息，供审计和回放
+模型表层：以后只发送替换后的摘要或裁剪结果
+```
+
+因此“日志仅追加”和“模型上下文可以压缩”并不矛盾。
+
+### SessionEvent 与 JSONL/Zstandard 不是同一个概念
+
+这三层要分开：
+
+| 层次 | 回答的问题 |
+|---|---|
+| SessionEvent 词汇 | 保存哪些持久事实 |
+| Session Persistence 后端 | 用 JSONL、SQLite 或其他方式持久化 |
+| 物理编码 | JSONL 是否使用 Zstandard 压缩、是否打包分片行 |
+
+当前官方 JSONL 后端支持 `zstd` 或 `none`，默认配置使用带校验和的 Zstandard 帧；应用也可以组合 SQLite 后端。Python SDK 当前文档又可能采用未压缩 JSONL。
+
+所以不要说“SessionEvent 天生就是 zstd JSONL”。更准确的说法是：**同一套事件词汇可以由不同持久化提供方保存；JSONL + Zstandard 是当前可选实现与默认配置之一。**
+
+### 请求重建与 KV Cache
+
+`request/header` 会记录重建非历史请求封装所需的快照，例如提供方、模型、系统提示词、工具 schema 和调用配置。
+
+精确重建有两项价值：
+
+1. 恢复或 Fork 后继续使用会话当时真正的配置；
+2. 前缀没有变化时，更有机会复用 **KV Cache（键值缓存）**。
+
+新增消息通常只追加在末尾；而从较早位置替换 surface、切换工具集合或修改系统提示词，可能从第一处差异开始降低缓存复用。
+
+### 日志也是数据安全边界
+
+会话日志可能包含用户消息、文件内容、工具参数、命令输出、系统提示词和调用配置。能进入模型的敏感数据，很可能也会进入日志或遥测副本。
+
+部署时要明确：
+
+- 日志保留多久；
+- 谁能读取和导出；
+- 是否加密；
+- 哪些字段需要脱敏；
+- 遥测是否上传；
+- 删除会话是否也删除持久副本和派生索引。
+
 ## Trajectory 不等于 Transcript
 
 **Transcript** 是“文本记录/对话转录”，通常偏重用户和助手说了什么。
@@ -219,6 +364,8 @@ Transcript ⊆ Trajectory（在很多系统里，对话记录只是完整轨迹�
 ### 2. 评估
 
 两个 Agent 都得到正确答案，但一个调用 3 次工具，另一个调用 50 次并产生高额费用。只看最终答案无法比较过程质量。
+
+更系统的指标、上下文成本、人工干预和独立验收方法参见 [[Agent评测：上下文成本、轨迹与独立验收]]。
 
 ### 3. 恢复和回放
 
@@ -297,6 +444,8 @@ Prompt 可以属于 preset，但 preset 还可能包含模型、工具、权限�
 
 - [DeepSeek Harness 官方仓库](https://github.com/deepseek-ai/deepseek-harness)
 - [DeepSeek Harness 中文架构文档](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/architecture.zh.md)
+- [DeepSeek Harness：Agent Presets](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/preset/agent-presets/README.zh.md)
+- [DeepSeek Harness：dsh-session](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/README.zh.md)
+- [DeepSeek Harness：JSONL Session Persistence](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/session/session-persistence-jsonl)
 - [ReAct 论文：Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629)
 - [SWE-agent 论文：Agent-Computer Interfaces Enable Automated Software Engineering](https://arxiv.org/abs/2405.15793)
-

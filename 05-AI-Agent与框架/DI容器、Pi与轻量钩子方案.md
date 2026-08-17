@@ -355,6 +355,8 @@ DeepSeek Harness：用 Cordis 组织起来的 Agent Harness
 
 - [[MCP模型上下文协议]]：MCP 解决跨程序的标准通信；DI、Hook 和 Cordis 主要解决程序内部依赖、事件与插件生命周期。
 - [[DeepSeek Harness、Everything is a Plugin与Cordis]]：Cordis 和 DeepSeek Harness 的完整架构说明。
+- [[Cordis运行时机制：Fiber、Effect与Scope]]：继续深入 Fiber 状态、可逆 Effect、服务解析与 Scope 边界。
+- [[Agent工具运行时：执行流水线、并发调度与Code Mode]]：轻量 Hook 在完整工具执行流水线中的实际用法。
 - [[Git Hook与自动化检查]]：Git 生命周期中的外部脚本钩子。
 - [[Prompt Engineering与Loop Engineering]]：Agent Hook 常用于观察或拦截循环中的步骤。
 - [[Preset与Agent Trajectory]]：Agent 的运行前装配与运行后轨迹。
