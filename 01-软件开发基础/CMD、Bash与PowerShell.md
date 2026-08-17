@@ -43,7 +43,7 @@ flowchart LR
     User["你输入一行文字"] --> Terminal["终端：显示与输入界面"]
     Terminal --> Shell["Shell：解析变量、引号、管道和重定向"]
     Shell --> Program["启动 git、node、pnpm 等程序"]
-    Program --> Shell
+    Program --> Shell                                                      
     Shell --> Terminal
 ```
 
