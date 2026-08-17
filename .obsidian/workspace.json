@@ -11,10 +11,14 @@
             "id": "644ea29bc0bda851",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "关系图谱"
+              "type": "markdown",
+              "state": {
+                "file": "05-AI-Agent与框架/Cordis运行时机制：Fiber、Effect与Scope.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Cordis运行时机制：Fiber、Effect与Scope"
             }
           }
         ]
@@ -184,6 +188,7 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
+    "05-AI-Agent与框架/DeepSeek Harness、Everything is a Plugin与Cordis.md",
     "05-AI-Agent与框架/Agent评测：上下文成本、轨迹与独立验收.md",
     "05-AI-Agent与框架/Agent工具运行时：执行流水线、并发调度与Code Mode.md",
     "05-AI-Agent与框架/Cordis运行时机制：Fiber、Effect与Scope.md",
@@ -193,7 +198,6 @@
     "01-软件开发基础/TCP、HTTP、HTTPS与WebSocket.md",
     "01-软件开发基础/CMD、Bash与PowerShell.md",
     "05-AI-Agent与框架/DI容器、Pi与轻量钩子方案.md",
-    "05-AI-Agent与框架/DeepSeek Harness、Everything is a Plugin与Cordis.md",
     "01-软件开发基础/Git Hook与自动化检查.md",
     "05-AI-Agent与框架/MCP模型上下文协议.md",
     "02-Web前端与界面/Webpack与HMR.md",
