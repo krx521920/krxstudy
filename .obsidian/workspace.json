@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03-Web后端与数据库/ORM.md",
+                "file": "01-软件开发基础/状态机与幂等性.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ORM"
+              "title": "状态机与幂等性"
             }
           }
         ]
@@ -188,8 +188,13 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
-    "01-软件开发基础/Index的常见含义.md",
+    "01-软件开发基础/CMD、Bash与PowerShell.md",
     "01-软件开发基础/状态机与幂等性.md",
+    "04-AI应用基础/RAG、Naive RAG与GraphRAG.md",
+    "04-AI应用基础/LangChain.md",
+    "05-AI-Agent与框架/Prompt Engineering与Loop Engineering.md",
+    "03-Web后端与数据库/ORM.md",
+    "01-软件开发基础/Index的常见含义.md",
     "00-导航/计算机知识库总索引.md",
     "05-AI-Agent与框架/Agent评测：上下文成本、轨迹与独立验收.md",
     "05-AI-Agent与框架/Cordis运行时机制：Fiber、Effect与Scope.md",
@@ -198,20 +203,15 @@
     "01-软件开发基础/Node.js与pnpm.md",
     "01-软件开发基础/SDK与API.md",
     "01-软件开发基础/TCP、HTTP、HTTPS与WebSocket.md",
-    "01-软件开发基础/CMD、Bash与PowerShell.md",
     "05-AI-Agent与框架/DI容器、Pi与轻量钩子方案.md",
     "01-软件开发基础/Git Hook与自动化检查.md",
     "05-AI-Agent与框架/MCP模型上下文协议.md",
     "02-Web前端与界面/Webpack与HMR.md",
     "01-软件开发基础/TypeScript与JavaScript.md",
     "05-AI-Agent与框架/Preset与Agent Trajectory.md",
-    "05-AI-Agent与框架/Prompt Engineering与Loop Engineering.md",
     "03-Web后端与数据库/Django.md",
-    "04-AI应用基础/RAG、Naive RAG与GraphRAG.md",
-    "03-Web后端与数据库/ORM.md",
     "02-Web前端与界面/WebView.md",
     "02-Web前端与界面/HTML.md",
-    "04-AI应用基础/LangChain.md",
     "AGENTS.md",
     "05-AI-Agent与框架",
     "04-AI应用基础",
