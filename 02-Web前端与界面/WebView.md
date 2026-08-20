@@ -106,7 +106,7 @@ Bridge 必须把“允许调用哪些方法、允许哪些网页调用、传入�
 
 WebView 同时连接了“网络网页”和“原生 App 权限”，因此安全边界非常重要：
 
-- 优先加载可信的 [[TCP、HTTP、HTTPS与WebSocket|HTTPS]] 页面；
+- 优先加载可信的 [[../01-软件开发基础/TCP、HTTP、HTTPS与WebSocket|HTTPS]] 页面；
 - 对允许访问的域名使用白名单；
 - 不要把强大的原生方法暴露给不可信网页；
 - 对 Bridge 的方法和参数做严格校验；
@@ -129,9 +129,9 @@ Android 官方明确警告：把 JavaScript 接口暴露给不可信 HTML，可�
 ## 和其他概念的关系
 
 - WebView 加载并解析 [[HTML]]、[[CSS]] 和 JavaScript。
-- 远程页面通常通过 [[TCP、HTTP、HTTPS与WebSocket|HTTPS]] 加载。
-- 页面请求后端数据时会使用 [[SDK与API|API]]。
-- 实时聊天页面可以建立 [[TCP、HTTP、HTTPS与WebSocket|WebSocket]] 连接。
+- 远程页面通常通过 [[../01-软件开发基础/TCP、HTTP、HTTPS与WebSocket|HTTPS]] 加载。
+- 页面请求后端数据时会使用 [[../01-软件开发基础/SDK与API|API]]。
+- 实时聊天页面可以建立 [[../01-软件开发基础/TCP、HTTP、HTTPS与WebSocket|WebSocket]] 连接。
 - 页面内容最终仍要经过 [[渲染逻辑]]。
 
 ## 参考资料

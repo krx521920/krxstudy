@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03-Web后端与数据库/ORM.md",
+                "file": "01-软件开发基础/Anaconda与Python环境管理.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ORM"
+              "title": "Anaconda与Python环境管理"
             }
           }
         ]
@@ -188,7 +188,13 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
+    "01-软件开发基础/SDK与API.md",
+    "05-AI-Agent与框架/DI容器、Pi与轻量钩子方案.md",
+    "05-AI-Agent与框架/Cordis运行时机制：Fiber、Effect与Scope.md",
+    "02-Web前端与界面/Toast提示.md",
+    "02-Web前端与界面/WebView.md",
     "03-Web后端与数据库/Django.md",
+    "03-Web后端与数据库/ORM.md",
     "02-Web前端与界面/渲染逻辑.md",
     "02-Web前端与界面/CSS.md",
     "02-Web前端与界面/Webpack与HMR.md",
@@ -201,19 +207,13 @@
     "04-AI应用基础/LangChain.md",
     "02-Web前端与界面/HTML.md",
     "AGENTS.md",
-    "02-Web前端与界面/WebView.md",
     "01-软件开发基础/状态机与幂等性.md",
     "01-软件开发基础/CMD、Bash与PowerShell.md",
     "05-AI-Agent与框架/Prompt Engineering与Loop Engineering.md",
-    "03-Web后端与数据库/ORM.md",
     "01-软件开发基础/Index的常见含义.md",
     "05-AI-Agent与框架/Agent评测：上下文成本、轨迹与独立验收.md",
-    "05-AI-Agent与框架/Cordis运行时机制：Fiber、Effect与Scope.md",
     "05-AI-Agent与框架/Agent工具运行时：执行流水线、并发调度与Code Mode.md",
     "01-软件开发基础/Node.js与pnpm.md",
-    "01-软件开发基础/SDK与API.md",
-    "01-软件开发基础/TCP、HTTP、HTTPS与WebSocket.md",
-    "05-AI-Agent与框架/DI容器、Pi与轻量钩子方案.md",
     "05-AI-Agent与框架",
     "04-AI应用基础",
     "03-Web后端与数据库",
