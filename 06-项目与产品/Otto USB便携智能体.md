@@ -635,12 +635,12 @@ Otto USB 是独立便携个人/课程产品；[[Otto产品总体技术架构|Ott
 
 ## 建议学习路线
 
-1. 先看 [[Otto与Otto USB对比及重点摘要]]。
+1. 先看 [[Otto使用技术学习地图]] 和 [[Otto与Otto USB对比及重点摘要]]。
 2. 理解 [[Node.js与pnpm]] 和本机 HTTP。
 3. 学习 [[Prompt Engineering与Loop Engineering]] 和 Agent 循环。
 4. 学习 [[状态机与幂等性]]，理解取消、重试和 `unknown_outcome`。
 5. 学习 [[RAG、Naive RAG与GraphRAG]] 和 [[MCP模型上下文协议]]。
-6. 最后再深入加密、许可证和供应链。
+6. 最后再深入 [[密码学基础：AES-GCM、scrypt、Ed25519与SHA-256|密码学]]、[[密钥管理：DEK、KEK、KMS、HSM与信封加密|密钥管理]]、许可证和 [[软件供应链：代码签名、SBOM与发布门禁|软件供应链]]。
 
 ## 资料来源
 

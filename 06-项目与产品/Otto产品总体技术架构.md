@@ -49,7 +49,7 @@ Otto 的目标，就是在模型外面增加一套可靠的运行系统。
 | 数据系统 | 档案室和仓库 | 保存账号、组织、附件、任务和业务记录 |
 | Control | 总部运营控制台 | 管 License、版本、签名、用量和商业策略 |
 
-相关基础概念可以先看：[[Prompt Engineering与Loop Engineering]]、[[Agent工具运行时：执行流水线、并发调度与Code Mode]]、[[SDK与API]]。
+相关基础概念可以先看：[[Otto使用技术学习地图]]、[[Prompt Engineering与Loop Engineering]]、[[Agent工具运行时：执行流水线、并发调度与Code Mode]]、[[SDK与API]]。
 
 ## Otto 面向哪些角色
 
@@ -242,7 +242,7 @@ sequenceDiagram
 | Preload 预加载 | 受控传达室 | 通过最小接口把允许的能力提供给界面 |
 | Renderer 渲染层 | 用户看到的前台 | React 页面、聊天、设置和状态展示 |
 
-这相当于“前台页面不能直接拿到整台电脑的总钥匙”。可关联学习：[[渲染逻辑]]、[[WebView]]、[[TypeScript与JavaScript]]。
+这相当于“前台页面不能直接拿到整台电脑的总钥匙”。详细原理见 [[Electron桌面应用架构]]；前置知识见 [[渲染逻辑]]、[[WebView]]、[[TypeScript与JavaScript]]。
 
 ## 模型不等于 Agent
 
