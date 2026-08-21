@@ -151,7 +151,7 @@ HTTPS 不是一种完全不同的网页内容格式，可以简化理解为：
 HTTPS = HTTP + TLS 安全保护
 ```
 
-TLS（Transport Layer Security，传输层安全协议）主要带来三件事：
+[[TLS与数字证书|TLS（Transport Layer Security，传输层安全协议）]]主要带来三件事；独立笔记还详细解释握手、证书链、公钥与私钥、TLS 1.3、mTLS 和 TLS 检查。
 
 ### 1. Confidentiality（机密性）
 

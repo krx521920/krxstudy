@@ -458,7 +458,7 @@ DNS 由本地还是远程解析，取决于应用用法和 SOCKS 配置。例如
 
 通常仍然加密。
 
-使用 HTTP 代理访问 HTTPS 时，客户端常先向代理发送 CONNECT 请求，请代理建立到目标主机和端口的隧道。之后 TLS 加密数据在隧道中传输。
+使用 HTTP 代理访问 HTTPS 时，客户端常先向代理发送 CONNECT 请求，请代理建立到目标主机和端口的隧道。之后 [[TLS与数字证书|TLS]] 加密数据在隧道中传输。
 
 ~~~mermaid
 sequenceDiagram
