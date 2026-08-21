@@ -1309,6 +1309,7 @@ TUN/VPN：通过虚拟网卡和路由接管流量
 
 ## 关联概念
 
+- [[防火墙与端口对外开放]]：详细区分程序监听、入站放行、局域网访问、NAT 端口转发与公网暴露。
 - [[TCP、HTTP、HTTPS与WebSocket]]：代理转发的底层连接、HTTPS 隧道和 WebSocket。
 - [[CMD、Bash与PowerShell]]：查看端口、设置环境变量和排查命令。
 - [[Node.js与pnpm]]：包管理器可能使用独立代理配置。
