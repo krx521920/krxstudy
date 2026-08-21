@@ -11,10 +11,14 @@
             "id": "644ea29bc0bda851",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "关系图谱"
+              "type": "markdown",
+              "state": {
+                "file": "01-软件开发基础/TLS与数字证书.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "TLS与数字证书"
             }
           }
         ]
@@ -184,8 +188,8 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
-    "04-AI应用基础/知识库是什么：个人、团队与AI知识库.md",
     "04-AI应用基础/LLM Wiki.md",
+    "04-AI应用基础/知识库是什么：个人、团队与AI知识库.md",
     "06-项目与产品/Otto使用技术学习地图.md",
     "05-AI-Agent与框架/RPA、UI Automation与CDP.md",
     "05-AI-Agent与框架/Control Plane、Data Plane、Edge Gateway与Federation.md",
