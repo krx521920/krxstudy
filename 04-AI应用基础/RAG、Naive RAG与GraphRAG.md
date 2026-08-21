@@ -281,6 +281,7 @@ Naive RAG 之后的常见增强包括：
 
 - [[MCP模型上下文协议]]：MCP 可以向 AI Host 提供知识库 Resource 或检索 Tool，但不会自动完成 RAG 的切分、Embedding、召回和评估。
 - [[LangChain]]：可以组织文档加载、Retriever、模型和 Agent 等 RAG 组件。
+- [[LLM Wiki]]：把原始资料提前整理成持久、可阅读、互相链接的知识层；它可以与 RAG 组合，并不只是二选一。
 - [[Index的常见含义]]：理解搜索索引、向量索引和“离线索引”阶段的不同含义。
 
 ## 参考资料
