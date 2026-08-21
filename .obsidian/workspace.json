@@ -188,6 +188,7 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
+    "01-软件开发基础/TLS与数字证书.md",
     "01-软件开发基础/系统代理、VPN与端口.md",
     "01-软件开发基础/DNS域名系统.md",
     "04-AI应用基础/RAG、Naive RAG与GraphRAG.md",
@@ -213,7 +214,6 @@
     "AGENTS.md",
     "01-软件开发基础/状态机与幂等性.md",
     "01-软件开发基础/CMD、Bash与PowerShell.md",
-    "01-软件开发基础/Index的常见含义.md",
     "05-AI-Agent与框架",
     "04-AI应用基础",
     "03-Web后端与数据库",
