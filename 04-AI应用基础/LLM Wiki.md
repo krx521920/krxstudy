@@ -363,6 +363,8 @@ Markdown 页面、来源和链接都能阅读，不像只存在向量数据库�
 
 ## 关联概念
 
+- [[知识库是什么：个人、团队与AI知识库]]：先从更广的范围理解个人、企业、客服和 AI 知识库分别解决什么问题。
+
 - [[RAG、Naive RAG与GraphRAG]]：比较查询时检索与提前编译知识的差异。
 - [[MCP模型上下文协议]]：可以把 Wiki 能力提供给多个 Agent。
 - [[Prompt Engineering与Loop Engineering]]：LLM Wiki 的 Ingest、Query、Lint 是一种长期 Agent 工作循环。
