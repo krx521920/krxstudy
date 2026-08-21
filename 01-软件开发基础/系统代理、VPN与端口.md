@@ -493,7 +493,7 @@ sequenceDiagram
 
 ## DNS 会怎样受影响
 
-**DNS（Domain Name System，域名系统）**把域名转换为 IP 地址。
+**[[DNS域名系统|DNS（Domain Name System，域名系统）]]**最常见的作用是把域名转换为 IP 地址；完整的递归查询、缓存、记录类型和加密 DNS 见独立笔记。
 
 代理开启后，DNS 可能有几种路径：
 

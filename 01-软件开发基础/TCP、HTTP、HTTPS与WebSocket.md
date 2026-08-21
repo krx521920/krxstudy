@@ -279,7 +279,7 @@ https://example.com/index.html
 
 大致过程是：
 
-1. DNS 把域名解析成服务器 IP；
+1. [[DNS域名系统|DNS]] 把域名解析成服务器 IP；
 2. 建立底层传输连接；
 3. 进行 TLS 握手并验证证书；
 4. 浏览器发送 HTTPS 请求；
@@ -312,7 +312,7 @@ https://example.com/index.html
 
 ## 推荐学习顺序
 
-1. IP 地址、域名、DNS 和端口；
+1. IP 地址、域名、[[DNS域名系统|DNS]] 和端口；
 2. TCP 的连接、可靠字节流；
 3. HTTP 请求和响应；
 4. TLS 证书与 HTTPS；
