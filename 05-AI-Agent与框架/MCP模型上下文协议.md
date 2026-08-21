@@ -962,6 +962,7 @@ MCP Server（提供 Resources / Prompts / Tools）
 
 - [[SDK与API]]：MCP 是协议；SDK 帮助实现协议；Server 常继续调用具体业务 API。
 - [[TCP、HTTP、HTTPS与WebSocket]]：远程 MCP 可以使用 Streamable HTTP；不要把 SSE 与 WebSocket 混为一谈。
+- [[TLS与数字证书]]：远程 MCP 通常由 HTTPS/TLS 保护传输，但 TLS 不能代替 OAuth、工具权限和用户审批。
 - [[CMD、Bash与PowerShell]]：本地 stdio Server 常由 Host 通过命令启动。
 - [[TypeScript与JavaScript]]、[[Node.js与pnpm]]：常用于编写和安装 MCP Client/Server，但 MCP 并不限定语言。
 - [[Prompt Engineering与Loop Engineering]]：Prompt 设计模型输入，Loop/Harness 决定工具调用怎样持续推进，MCP 提供外部连接协议。

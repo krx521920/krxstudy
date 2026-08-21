@@ -623,8 +623,16 @@ TLS 与具体应用协议相对独立。
 | 安全 IMAP | IMAPS | 993 |
 | 数据库 | 数据库协议 + TLS | 取决于数据库 |
 | 自定义 API | 应用协议 + TLS | 由服务决定 |
+| 远程 MCP | MCP over HTTPS / Streamable HTTP + TLS | 通常 443，也可自定义 |
 
 端口只是惯例入口，TLS 本身并不只能运行在 443 端口。
+
+### TLS 与 MCP 的关系
+
+- 本地 `stdio` MCP Server 通过进程的标准输入输出通信，不建立远程 TLS 连接；安全主要依靠进程权限、文件权限和 Host 隔离。
+- 远程 [[MCP模型上下文协议|MCP]] 通常通过 HTTPS 传输，TLS 负责验证远程服务身份，并保护 MCP 消息在网络中的机密性和完整性。
+- TLS 只保护两个 TLS 端点之间的传输，不能代替 OAuth、账号权限、Tool 参数校验和用户批准。
+- 企业也可以使用 mTLS 同时验证 MCP Client 与 Server，但认证成功后仍要继续判断这个身份能调用哪些工具。
 
 ---
 
@@ -994,6 +1002,7 @@ flowchart LR
 - [[系统代理、VPN与端口]]：CONNECT 隧道、TLS 检查、代理证书与流量路径。
 - [[状态机与幂等性]]：TLS 1.3 0-RTT 的重放风险为什么要求业务谨慎处理重复请求。
 - [[SDK与API]]：API 客户端通常通过 TLS 验证服务身份并保护请求。
+- [[MCP模型上下文协议]]：远程 MCP 常由 HTTPS/TLS 保护传输；MCP 规定能力调用，TLS 保护网络通道。
 - [[CMD、Bash与PowerShell]]：使用 curl、OpenSSL 和 PowerShell 分层排查连接。
 
 ---
