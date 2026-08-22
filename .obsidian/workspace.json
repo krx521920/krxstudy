@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01-软件开发基础/TLS与数字证书.md",
+                "file": "01-软件开发基础/身份认证与授权：ACL、RBAC、MFA、OAuth、OIDC、SAML与SCIM.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "TLS与数字证书"
+              "title": "身份认证与授权：ACL、RBAC、MFA、OAuth、OIDC、SAML与SCIM"
             }
           }
         ]
@@ -188,6 +188,10 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
+    "01-软件开发基础/Unix与Linux设计哲学：文件、小工具与管道.md",
+    "06-项目与产品/Otto使用技术学习地图.md",
+    "05-AI-Agent与框架/Preset与Agent Trajectory.md",
+    "01-软件开发基础/TLS与数字证书.md",
     "01-软件开发基础/SSRF、DNS Rebinding与浏览器来源安全.md",
     "01-软件开发基础/SSE与流式响应.md",
     "01-软件开发基础/Node.js与pnpm.md",
@@ -210,10 +214,6 @@
     "01-软件开发基础/系统代理、VPN与端口.md",
     "01-软件开发基础/状态机与幂等性.md",
     "01-软件开发基础/Anaconda与Python环境管理.md",
-    "01-软件开发基础/DNS域名系统.md",
-    "01-软件开发基础/Git Hook与自动化检查.md",
-    "01-软件开发基础/TCP、HTTP、HTTPS与WebSocket.md",
-    "01-软件开发基础/TLS与数字证书.md",
     "06-项目与产品",
     "05-AI-Agent与框架",
     "04-AI应用基础",
