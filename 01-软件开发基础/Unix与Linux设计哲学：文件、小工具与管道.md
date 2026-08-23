@@ -1025,6 +1025,7 @@ flowchart TD
 
 - [[CMD、Bash与PowerShell]]：终端、Shell、命令和不同管道模型的区别。
 - [[Linux为什么可以做得很小]]：Unix 模块化思想怎样落实为可裁剪内核、最小用户空间、BusyBox 和单用途系统。
+- [[内存映射、MMIO与代码控制硬件]]：理解 `/dev`、文件描述符和系统调用背后，驱动怎样真正读写设备寄存器并管理硬件。
 - [[Windows ACL与NTFS权限]]：对比 Windows ACL 与 Unix/Linux 的所有者、用户组、mode bits 和扩展 ACL。
 - [[DNS域名系统]]：`ping` 域名时首先涉及名称解析。
 - [[TCP、HTTP、HTTPS与WebSocket]]：理解为什么 ICMP ping 不能代替 TCP 和应用层检查。
