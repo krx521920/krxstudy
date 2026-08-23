@@ -188,6 +188,7 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
+    "01-软件开发基础/嵌入式系统为什么经常使用Linux.md",
     "01-软件开发基础/CHKDSK、SFC与DISM：Windows检查与修复工具.md",
     "01-软件开发基础/Windows UAC与管理员权限提升.md",
     "03-Web后端与数据库/Celery分布式任务队列.md",
@@ -213,7 +214,6 @@
     "02-Web前端与界面/Webpack与HMR.md",
     "02-Web前端与界面/Electron桌面应用架构.md",
     "02-Web前端与界面/渲染逻辑.md",
-    "01-软件开发基础/CMD、Bash与PowerShell.md",
     "06-项目与产品",
     "05-AI-Agent与框架",
     "04-AI应用基础",
