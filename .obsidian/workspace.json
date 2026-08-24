@@ -188,6 +188,7 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
+    "01-软件开发基础/ESLint与JavaScript静态代码检查.md",
     "01-软件开发基础/DNS域名系统.md",
     "01-软件开发基础/CMD、Bash与PowerShell.md",
     "01-软件开发基础/Unix与Linux设计哲学：文件、小工具与管道.md",
@@ -213,7 +214,6 @@
     "01-软件开发基础/Node.js与pnpm.md",
     "01-软件开发基础/Index的常见含义.md",
     "04-AI应用基础/RAG、Naive RAG与GraphRAG.md",
-    "05-AI-Agent与框架/DI容器、Pi与轻量钩子方案.md",
     "06-项目与产品",
     "05-AI-Agent与框架",
     "04-AI应用基础",
