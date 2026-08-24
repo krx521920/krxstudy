@@ -103,7 +103,7 @@ pnpm run lint
 2. `pnpm run lint` 执行 `package.json` 中名为 `lint` 的脚本；
 3. 如果检查失败并返回非 `0`，`pre-commit` 就会失败，Git 通常停止提交。
 
-这里同时出现了 [[Node.js与pnpm|pnpm]] 和 [[CMD、Bash与PowerShell|Shell]]：Hook 负责“什么时候触发”，Shell 负责“怎样解释脚本”，pnpm 负责“运行项目里的检查命令”。
+这里同时出现了 [[Node.js与pnpm|pnpm]] 和 [[CMD、Bash与PowerShell|Shell]]：Hook 负责“什么时候触发”，Shell 负责“怎样解释脚本”，pnpm 负责“运行项目里的检查命令”。`lint` 脚本可以调用 [[ESLint与JavaScript静态代码检查|ESLint]]，让 JavaScript/TypeScript 的静态规则在提交前自动执行。
 
 ## Hook、脚本和 CI 的区别
 
