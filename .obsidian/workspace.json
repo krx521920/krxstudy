@@ -79,8 +79,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -187,7 +186,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "644ea29bc0bda851",
+  "active": "239ebaf706f58380",
   "lastOpenFiles": [
     "00-导航/计算机知识库总索引.md",
     "01-软件开发基础/防火墙与端口对外开放.md",
