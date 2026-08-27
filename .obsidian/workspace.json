@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01-软件开发基础/Linux为什么可以做得很小.md",
+                "file": "01-软件开发基础/Minidump与Windows崩溃转储分析.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Linux为什么可以做得很小"
+              "title": "Minidump与Windows崩溃转储分析"
             }
           }
         ]
@@ -188,6 +188,8 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
+    "01-软件开发基础/Linux为什么可以做得很小.md",
+    "01-软件开发基础/固件、ROM代码与计算机启动链.md",
     "01-软件开发基础/设备驱动：操作系统控制硬件的翻译层.md",
     "01-软件开发基础/磁盘与网卡：存储设备和网络接口.md",
     "01-软件开发基础/端到端加密E2EE与MLS.md",
@@ -212,8 +214,6 @@
     "01-软件开发基础/CMD、Bash与PowerShell.md",
     "01-软件开发基础/Linux的主要用途、普及原因与桌面现状.md",
     "01-软件开发基础/常见编程语言及其用途.md",
-    "01-软件开发基础/嵌入式系统为什么经常使用Linux.md",
-    "01-软件开发基础/CHKDSK、SFC与DISM：Windows检查与修复工具.md",
     "06-项目与产品",
     "05-AI-Agent与框架",
     "04-AI应用基础",
