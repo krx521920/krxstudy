@@ -11,8 +11,8 @@ tags:
   - JavaScript
   - 前端
 created: 2026-08-21
-updated: 2026-08-21
-verified: 2026-08-21
+updated: 2026-08-29
+verified: 2026-08-29
 ---
 
 # Electron 桌面应用架构
@@ -138,6 +138,8 @@ IPC 不是天然安全的。主进程仍要验证：
 | 自带或依赖 Chromium 与 Node.js | 通常使用系统或应用提供的网页引擎 |
 | 主进程可以使用本机能力 | WebView 页面通常受宿主桥接接口限制 |
 | 负责整个应用生命周期 | 只是应用中的一个显示组件 |
+
+如果要比较“随应用分发 Chromium + Node.js”和“复用系统 WebView + Rust 核心”两条完整桌面应用路线，参见 [[Tauri跨平台桌面应用架构#九、Tauri 与 Electron 的区别|Tauri 与 Electron 的区别]]。
 
 ## Electron 的优点
 

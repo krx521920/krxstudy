@@ -9,8 +9,8 @@ tags:
   - WebView
   - 混合应用
 created: 2026-08-16
-updated: 2026-08-16
-verified: 2026-08-16
+updated: 2026-08-29
+verified: 2026-08-29
 ---
 
 # WebView
@@ -121,6 +121,7 @@ Android 官方明确警告：把 JavaScript 接口暴露给不可信 HTML，可�
 ## 与 Electron、React Native 的区别
 
 - **Electron**：用 Chromium 和 Node.js 构建整个桌面应用，通常不只是页面里的一小块 WebView。
+- **[[Tauri跨平台桌面应用架构|Tauri]]**：使用系统 WebView 显示整个主要界面，再通过受控 IPC 连接 Rust 原生核心。
 - **React Native**：React 代码主要驱动原生 UI 组件，不等于把网页塞进 WebView。
 - **WebView**：具体的内嵌 Web 内容容器。
 
