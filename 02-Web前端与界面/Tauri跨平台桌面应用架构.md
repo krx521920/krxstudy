@@ -328,7 +328,7 @@ Tauri 的插件化和 [[DeepSeek Harness、Everything is a Plugin与Cordis|Every
 
 ## 八、Sidecar 是什么
 
-**Sidecar（边车程序）**是随 Tauri 应用一起打包的外部可执行文件。
+**[[Sidecar边车程序与辅助进程|Sidecar（边车程序）]]**是随 Tauri 应用一起打包的外部可执行文件。它在独立进程中为主程序提供辅助能力，可以用 Rust、Python、Go、Java 或其他语言开发。
 
 例如团队已有一个 Python 数据处理程序：
 
@@ -341,15 +341,20 @@ Tauri主程序
 
 这样用户不必自己安装 Python，也能使用原有程序。
 
-Sidecar 的代价是：
+Tauri 通过 `bundle.externalBin` 把 Sidecar 放入安装包，再由 Shell 插件的 `Command.sidecar()` 启动它。`execute()` 适合等待短任务完成；`spawn()` 适合需要持续收发数据的长驻进程。Tauri 2 还要求在 Capability 中只开放所需的 `shell:allow-execute` 或 `shell:allow-spawn` 权限。
+
+Sidecar 不一定监听网络端口。主程序可以通过命令参数、stdin/stdout 管道、Named Pipe、Unix Socket 或本地 HTTP 与它通信。
+
+它的主要代价是：
 
 - 每个平台、CPU 架构可能需要不同二进制文件；
 - 安装包会变大；
+- 要设计通信协议、超时和版本兼容；
 - 需要校验参数，防止命令注入；
 - 需要处理进程启动、退出、崩溃和日志；
 - 需要一起签名、更新和做供应链审查。
 
-因此，“用了 Tauri”并不代表整个应用只能用 Rust。它可以调用外部二进制程序，但每多一层就多一层部署和安全成本。
+因此，“用了 Tauri”并不代表整个应用只能用 Rust。详细的通信方式、Python 打包、端口选择、生命周期和安全检查参见 [[Sidecar边车程序与辅助进程]]。
 
 ---
 
