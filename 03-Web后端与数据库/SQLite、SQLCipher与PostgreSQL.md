@@ -22,7 +22,6 @@ created: 2026-08-21
 updated: 2026-08-29
 verified: 2026-08-29
 ---
-
 # SQLite、MySQL、SQLCipher 与 PostgreSQL
 
 > [!summary] 一句话区分
