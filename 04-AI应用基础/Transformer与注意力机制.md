@@ -891,6 +891,9 @@ Transformer
 
 ## 关联概念
 
+- [[大模型架构与效率技术地图]]：把 MoE、高效注意力、状态空间/长期记忆、推理模型、多模态和部署加速放进同一张地图。
+- [[高效注意力：FlashAttention、GQA、MLA与线性注意力]]：详细区分 FlashAttention、GQA、MLA、稀疏注意力和线性注意力。
+- [[状态空间模型与长期记忆：Mamba、Titans与外部记忆]]：理解为什么一些架构用有限状态或外部存储补充标准注意力。
 - [[RLHF与大模型对齐]]：人类偏好、奖励模型、PPO、DPO 与 RLAIF 怎样改变训练后模型的行为倾向。
 - [[Prompt Engineering与Loop Engineering]]：怎样设计放入上下文的输入，以及怎样用反馈循环完成任务。
 - [[RAG、Naive RAG与GraphRAG]]：怎样把外部知识检索结果临时加入 Transformer 上下文。
