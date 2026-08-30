@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03-Web后端与数据库/SQLite、SQLCipher与PostgreSQL.md",
+                "file": "02-Web前端与界面/渲染逻辑.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SQLite、SQLCipher与PostgreSQL"
+              "title": "渲染逻辑"
             }
           }
         ]
@@ -188,6 +188,10 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
+    "04-AI应用基础/Transformer与注意力机制.md",
+    "03-Web后端与数据库/Redis缓存与分布式协调.md",
+    "01-软件开发基础/高并发系统：瓶颈分析、扩容与稳定性治理.md",
+    "03-Web后端与数据库/SQLite、SQLCipher与PostgreSQL.md",
     "03-Web后端与数据库/ORM.md",
     "05-AI-Agent与框架/Cordis运行时机制：Fiber、Effect与Scope.md",
     "05-AI-Agent与框架/Control Plane、Data Plane、Edge Gateway与Federation.md",
@@ -195,7 +199,6 @@
     "04-AI应用基础/RAG、Naive RAG与GraphRAG.md",
     "01-软件开发基础/高可用、健康检查与故障恢复.md",
     "02-Web前端与界面/React组件化前端开发.md",
-    "01-软件开发基础/高并发系统：瓶颈分析、扩容与稳定性治理.md",
     "01-软件开发基础/身份认证与授权：ACL、RBAC、MFA、OAuth、OIDC、SAML与SCIM.md",
     "01-软件开发基础/系统代理、VPN与端口.md",
     "01-软件开发基础/Windows UAC与管理员权限提升.md",
@@ -212,9 +215,6 @@
     "01-软件开发基础/固件、ROM代码与计算机启动链.md",
     "01-软件开发基础/设备驱动：操作系统控制硬件的翻译层.md",
     "01-软件开发基础/Windows ACL与NTFS权限.md",
-    "01-软件开发基础/内存映射、MMIO与代码控制硬件.md",
-    "01-软件开发基础/ESLint与JavaScript静态代码检查.md",
-    "01-软件开发基础/SDK与API.md",
     "06-项目与产品",
     "05-AI-Agent与框架",
     "04-AI应用基础",
