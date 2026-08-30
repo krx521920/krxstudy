@@ -626,6 +626,8 @@ Decoder-Only 语言模型常见目标是预测下一个 Token：
 - 工具使用训练；
 - 特定领域适配。
 
+其中，[[RLHF与大模型对齐|RLHF]] 会把人类对多个回答的比较变成奖励信号，让模型更倾向于生成符合人类意图的回答；DPO、RLAIF、GRPO 和可验证奖励则属于相关但不完全相同的后训练方法。
+
 因此一个聊天模型的行为不只来自 Transformer 架构，还来自训练数据、训练目标、微调、系统提示、工具和产品层控制。
 
 ---
@@ -889,6 +891,7 @@ Transformer
 
 ## 关联概念
 
+- [[RLHF与大模型对齐]]：人类偏好、奖励模型、PPO、DPO 与 RLAIF 怎样改变训练后模型的行为倾向。
 - [[Prompt Engineering与Loop Engineering]]：怎样设计放入上下文的输入，以及怎样用反馈循环完成任务。
 - [[RAG、Naive RAG与GraphRAG]]：怎样把外部知识检索结果临时加入 Transformer 上下文。
 - [[LangChain]]：怎样在模型外部编排 Prompt、检索、工具和工作流。
