@@ -189,6 +189,7 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
+    "01-软件开发基础/开发、测试、预发布与生产环境.md",
     "05-AI-Agent与框架/Agent工具运行时：执行流水线、并发调度与Code Mode.md",
     "02-Web前端与界面/React组件化前端开发.md",
     "02-Web前端与界面/Webpack与HMR.md",
@@ -214,7 +215,6 @@
     "04-AI应用基础/状态空间模型与长期记忆：Mamba、Titans与外部记忆.md",
     "04-AI应用基础/高效注意力：FlashAttention、GQA、MLA与线性注意力.md",
     "04-AI应用基础/MoE稀疏专家模型与DeepSeekMoE.md",
-    "04-AI应用基础/大模型架构与效率技术地图.md",
     "未命名.canvas",
     "06-项目与产品",
     "05-AI-Agent与框架",
