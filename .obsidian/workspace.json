@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01-软件开发基础/TCP、HTTP、HTTPS与WebSocket.md",
+                "file": "01-软件开发基础/高并发系统：瓶颈分析、扩容与稳定性治理.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "TCP、HTTP、HTTPS与WebSocket"
+              "title": "高并发系统：瓶颈分析、扩容与稳定性治理"
             }
           }
         ]
@@ -189,9 +189,13 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
+    "05-AI-Agent与框架/Agent工具运行时：执行流水线、并发调度与Code Mode.md",
+    "02-Web前端与界面/React组件化前端开发.md",
+    "02-Web前端与界面/Webpack与HMR.md",
+    "01-软件开发基础/Linux为什么可以做得很小.md",
+    "01-软件开发基础/TCP、HTTP、HTTPS与WebSocket.md",
     "02-Web前端与界面/React前端技术栈：Vite、Router、Zustand与PWA.md",
     "01-软件开发基础/常见编程语言及其用途.md",
-    "02-Web前端与界面/React组件化前端开发.md",
     "01-软件开发基础/Web端、桌面软件与CLI程序的区别.md",
     "00-导航/计算机知识库总索引.md",
     "03-Web后端与数据库/Django.md",
@@ -211,10 +215,6 @@
     "04-AI应用基础/高效注意力：FlashAttention、GQA、MLA与线性注意力.md",
     "04-AI应用基础/MoE稀疏专家模型与DeepSeekMoE.md",
     "04-AI应用基础/大模型架构与效率技术地图.md",
-    "04-AI应用基础/RLHF与大模型对齐.md",
-    "03-Web后端与数据库/Redis缓存与分布式协调.md",
-    "01-软件开发基础/高并发系统：瓶颈分析、扩容与稳定性治理.md",
-    "03-Web后端与数据库/SQLite、SQLCipher与PostgreSQL.md",
     "未命名.canvas",
     "06-项目与产品",
     "05-AI-Agent与框架",
