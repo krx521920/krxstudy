@@ -14,7 +14,7 @@ tags:
   - Tauri
   - Kubernetes
 created: 2026-08-29
-updated: 2026-08-29
+updated: 2026-09-04
 verified: 2026-08-29
 ---
 
@@ -667,6 +667,7 @@ flowchart LR
 
 ## 十九、关联概念
 
+- [[Web端、桌面软件与CLI程序的区别]]：理解桌面 GUI 如何把 CLI 作为子进程包装，以及这种方式和直接调用 API/SDK 的差别。
 - [[Tauri跨平台桌面应用架构]]：桌面应用怎样捆绑和调用外部二进制。
 - [[进程、线程、多进程与多线程]]：理解 Sidecar 为什么拥有独立进程和内存空间。
 - [[CMD、Bash与PowerShell]]：理解可执行文件、命令参数和标准流。
