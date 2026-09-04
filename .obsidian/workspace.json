@@ -11,10 +11,14 @@
             "id": "644ea29bc0bda851",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "关系图谱"
+              "type": "markdown",
+              "state": {
+                "file": "02-Web前端与界面/React组件化前端开发.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "React组件化前端开发"
             }
           }
         ]
@@ -51,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "react",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -75,7 +79,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -184,6 +189,11 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
+    "00-导航/计算机知识库总索引.md",
+    "03-Web后端与数据库/Django.md",
+    "05-AI-Agent与框架/Cordis运行时机制：Fiber、Effect与Scope.md",
+    "02-Web前端与界面/Electron桌面应用架构.md",
+    "01-软件开发基础/常见编程语言及其用途.md",
     "01-软件开发基础/内网、公网与私有化服务器部署.md",
     "04-AI应用基础/大模型从数据、Token到训练与本地部署.md",
     "01-软件开发基础/防火墙与端口对外开放.md",
@@ -203,13 +213,8 @@
     "01-软件开发基础/高并发系统：瓶颈分析、扩容与稳定性治理.md",
     "03-Web后端与数据库/SQLite、SQLCipher与PostgreSQL.md",
     "03-Web后端与数据库/ORM.md",
-    "05-AI-Agent与框架/Cordis运行时机制：Fiber、Effect与Scope.md",
     "05-AI-Agent与框架/Control Plane、Data Plane、Edge Gateway与Federation.md",
     "04-AI应用基础/LLM Wiki.md",
-    "04-AI应用基础/RAG、Naive RAG与GraphRAG.md",
-    "01-软件开发基础/高可用、健康检查与故障恢复.md",
-    "02-Web前端与界面/React组件化前端开发.md",
-    "01-软件开发基础/身份认证与授权：ACL、RBAC、MFA、OAuth、OIDC、SAML与SCIM.md",
     "未命名.canvas",
     "06-项目与产品",
     "05-AI-Agent与框架",
