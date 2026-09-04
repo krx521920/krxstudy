@@ -11,10 +11,14 @@
             "id": "644ea29bc0bda851",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "关系图谱"
+              "type": "markdown",
+              "state": {
+                "file": "01-软件开发基础/内网、公网与私有化服务器部署.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "内网、公网与私有化服务器部署"
             }
           }
         ]
@@ -184,6 +188,8 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
+    "04-AI应用基础/大模型从数据、Token到训练与本地部署.md",
+    "01-软件开发基础/防火墙与端口对外开放.md",
     "01-软件开发基础/端到端加密E2EE与MLS.md",
     "04-AI应用基础/Transformer与注意力机制.md",
     "01-软件开发基础/Sidecar边车程序与辅助进程.md",
@@ -208,8 +214,6 @@
     "02-Web前端与界面/React组件化前端开发.md",
     "01-软件开发基础/身份认证与授权：ACL、RBAC、MFA、OAuth、OIDC、SAML与SCIM.md",
     "01-软件开发基础/系统代理、VPN与端口.md",
-    "01-软件开发基础/Windows UAC与管理员权限提升.md",
-    "01-软件开发基础/磁盘与网卡：存储设备和网络接口.md",
     "未命名.canvas",
     "06-项目与产品",
     "05-AI-Agent与框架",
