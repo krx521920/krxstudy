@@ -16,7 +16,7 @@ tags:
   - Pi
   - Cordis
 created: 2026-08-16
-updated: 2026-08-17
+updated: 2026-09-05
 verified: 2026-08-17
 ---
 
@@ -126,11 +126,13 @@ class OrderService {
 
 | 生命周期 | 含义 | 类比 |
 |---|---|---|
-| Transient（瞬时） | 每次请求都创建新实例 | 每次叫车来一辆新车 |
-| Scoped（作用域） | 同一个请求/会话内复用，离开作用域后释放 | 一次旅行期间使用同一辆租车 |
-| Singleton（单例） | 整个应用通常只保留一个实例 | 整栋楼共用一个总服务台 |
+| Transient（瞬时） | 每次向容器解析该服务时创建新实例 | 每次叫车来一辆新车 |
+| Scoped（作用域） | 同一作用域内复用；Web 后端常用请求作用域，具体以框架为准 | 一次旅行期间使用同一辆租车 |
+| Singleton（单例） | 同一 DI 容器中的该项注册通常复用一个实例 | 同一栋楼共用一个总服务台 |
 
 这里的 **Container（容器）不是 Docker 容器**。DI 容器是“保存服务注册并组装对象”的软件结构；Docker 容器是隔离程序运行环境的操作系统级技术。
+
+2026-09-05 补充：详见 [[Docker容器与DI容器：运行隔离和对象装配]]。Docker 可以运行一个内部使用 DI 的应用；DI 管理的数据库客户端对象，可能通过网络连接另一个 Docker 容器里的数据库。DI 单例不会自动在多个进程或多个 Docker 容器之间共享；DI 的作用域也不等于操作系统的安全隔离。此处生命周期说明按 Microsoft 官方资料复核，本文其他框架的核对日期仍见原记录。
 
 ## DI 容器的边界
 
@@ -353,6 +355,7 @@ DeepSeek Harness：用 Cordis 组织起来的 Agent Harness
 
 ## 关联概念
 
+- [[Docker容器与DI容器：运行隔离和对象装配]]：区分程序运行环境与内部对象装配，理解镜像、进程、单例范围和数据库客户端。
 - [[MCP模型上下文协议]]：MCP 解决跨程序的标准通信；DI、Hook 和 Cordis 主要解决程序内部依赖、事件与插件生命周期。
 - [[DeepSeek Harness、Everything is a Plugin与Cordis]]：Cordis 和 DeepSeek Harness 的完整架构说明。
 - [[Cordis运行时机制：Fiber、Effect与Scope]]：继续深入 Fiber 状态、可逆 Effect、服务解析与 Scope 边界。
@@ -366,6 +369,7 @@ DeepSeek Harness：用 Cordis 组织起来的 Agent Harness
 
 - [Martin Fowler：Inversion of Control Containers and the Dependency Injection Pattern](https://martinfowler.com/articles/injection.html)
 - [Microsoft Learn：Dependency Injection 概念与 Service Container](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection/overview)
+- [Microsoft Learn：Service lifetimes（2026-09-05 核对）](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection/service-lifetimes)
 - [Pi 官方仓库](https://github.com/earendil-works/pi)
 - [Pi 官方 Extension 文档](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/extensions.md)
 - [DeepSeek Harness：Cordis 中文入门](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/cordis-primer.zh.md)
