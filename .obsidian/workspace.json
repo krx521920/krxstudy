@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05-AI-Agent与框架/DI容器、Pi与轻量钩子方案.md",
+                "file": "05-AI-Agent与框架/Prompt Engineering与Loop Engineering.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "DI容器、Pi与轻量钩子方案"
+              "title": "Prompt Engineering与Loop Engineering"
             }
           }
         ]
@@ -189,6 +189,7 @@
   },
   "active": "644ea29bc0bda851",
   "lastOpenFiles": [
+    "05-AI-Agent与框架/DI容器、Pi与轻量钩子方案.md",
     "01-软件开发基础/Docker容器与DI容器：运行隔离和对象装配.md",
     "02-Web前端与界面/React前端技术栈：Vite、Router、Zustand与PWA.md",
     "01-软件开发基础/开发、测试、预发布与生产环境.md",
@@ -214,7 +215,6 @@
     "04-AI应用基础/大模型推理加速：FP8、量化、KV Cache与多Token预测.md",
     "04-AI应用基础/多模态模型：ViT、DiT与视觉语言模型.md",
     "04-AI应用基础/推理模型、RL推理与测试时计算扩展.md",
-    "04-AI应用基础/状态空间模型与长期记忆：Mamba、Titans与外部记忆.md",
     "未命名.canvas",
     "06-项目与产品",
     "05-AI-Agent与框架",
