@@ -15,7 +15,7 @@ tags:
   - Git
   - Web
 created: 2026-08-16
-updated: 2026-08-16
+updated: 2026-09-08
 verified: 2026-08-16
 ---
 
@@ -464,6 +464,8 @@ src/index.js / index.ts
 
 ## 关联概念
 
+- [[B+树与数据库索引原理]]：深入理解页、树、联合索引、聚簇索引、回表与覆盖索引。
+- [[SQL索引、执行计划与性能优化]]：用 EXPLAIN 与实际测量检查 SQL，而不只判断有没有索引。
 - [[TypeScript与JavaScript]]：数组下标、`index.ts` 和类型检查。
 - [[Git Hook与自动化检查]]：Git 提交前后的自动检查，以及 Git Index 的位置。
 - [[HTML]]：`index.html` 常作为网站默认页面。
