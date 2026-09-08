@@ -13,7 +13,7 @@ tags:
   - 计算机视觉
   - Transformer
 created: 2026-08-30
-updated: 2026-08-30
+updated: 2026-09-08
 ---
 
 # 多模态模型：ViT、DiT与视觉语言模型
@@ -219,6 +219,8 @@ ImageBind 展示了把图片、文字、音频、深度、热成像和 IMU 等�
 - 效率：[[高效注意力：FlashAttention、GQA、MLA与线性注意力]]
 - 部署：[[大模型推理加速：FP8、量化、KV Cache与多Token预测]]
 - 工具安全：[[MCP模型上下文协议]]
+- 身体与动作：[[具身智能与离身智能：感知、行动与环境交互]]。能看图、听声音不等于已具备可靠的机器人控制能力。
+- 环境预测：[[世界模型：环境预测、想象与规划]]。视频逼真不自动证明物理预测可靠或动作可控。这两条延伸链接于 2026-09-08 补充。
 
 ## 参考资料
 
@@ -229,4 +231,3 @@ ImageBind 展示了把图片、文字、音频、深度、热成像和 IMU 等�
 - [Scalable Diffusion Models with Transformers：DiT](https://arxiv.org/abs/2212.09748)
 - [Visual Instruction Tuning：LLaVA](https://arxiv.org/abs/2304.08485)
 - [ImageBind: One Embedding Space To Bind Them All](https://arxiv.org/abs/2305.05665)
-
