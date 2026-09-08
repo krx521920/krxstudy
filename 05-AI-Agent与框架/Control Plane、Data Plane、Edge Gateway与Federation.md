@@ -10,14 +10,17 @@ tags:
   - 分布式系统
   - Otto
 created: 2026-08-21
-updated: 2026-08-21
+updated: 2026-09-08
 verified: 2026-08-21
 ---
 
 # Control Plane、Data Plane、Edge Gateway 与 Federation
 
 > [!summary] 一句话结论
-> **Control Plane（控制面）负责制定和下发规则，Data Plane（数据面）负责真正处理业务请求；Edge Gateway（边缘网关）守在外部服务入口，Federation（联邦）让多个相互独立的部署在保持边界的前提下协作。**
+> **Control Plane（控制面）负责制定和下发规则，Data Plane（数据面）负责真正处理业务请求；本篇 Otto 语境中的 Edge Gateway（边缘网关）守在模型服务入口，Federation（联邦）让多个相互独立的部署在保持边界的前提下协作。**
+
+> [!note] 2026-09-08 补充：同名术语需要看场景
+> 工业与物联网中的边缘网关，常连接传感器、仪表和控制器，承担采集、协议适配、缓存与本地处理；不等于本篇的模型调用网关。硬件模块与工业网关的区别见 [[边缘计算模块与边缘网关]]，原有 Otto 产品职责仍按其手册理解。
 
 ## 一、先用机场理解四个概念
 
@@ -66,7 +69,7 @@ verified: 2026-08-21
 
 **Gateway 是网关，也就是进入另一片网络或服务前的统一入口。**
 
-在 AI 产品中，Edge Gateway 常位于 Agent 与模型供应商之间：
+在 Otto 手册的 AI 产品架构语境中，Edge Gateway 位于 Agent 与模型供应商之间：
 
 ```mermaid
 flowchart LR
