@@ -55,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "langch",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -79,7 +79,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -196,7 +197,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "55fe0102fd68eab2",
+  "active": "313888fccf46009c",
   "lastOpenFiles": [
     "00-导航/计算机知识库总索引.md",
     "krxstudy/06-项目与产品/Otto使用技术学习地图.md",
