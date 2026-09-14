@@ -16,7 +16,7 @@ tags:
   - Windows
   - Linux
 created: 2026-08-16
-updated: 2026-08-22
+updated: 2026-09-14
 verified: 2026-08-16
 ---
 
@@ -242,6 +242,7 @@ Bash 的 `$NAME` 与 PowerShell 的 `$env:NAME` 含义和作用域规则不同�
 ## 关联概念
 
 - [[Unix与Linux设计哲学：文件、小工具与管道]]：进一步理解 Bash 背后的文件描述符、标准流、小工具、ls、file、ping 与管道设计。
+- [[Termux：Android上的终端与Linux工具环境]]：Android 手机上承载 Shell、安装命令行工具和连接远程服务器的实际例子；终端界面不等于获得系统管理员权限。
 
 ## 学习建议
 
@@ -262,4 +263,3 @@ Bash 的 `$NAME` 与 PowerShell 的 `$env:NAME` 含义和作用域规则不同�
 - [Microsoft Learn：PowerShell 概述](https://learn.microsoft.com/powershell/scripting/overview)
 - [GNU Bash Reference Manual：What is Bash?](https://www.gnu.org/software/bash/manual/html_node/What-is-Bash_003f.html)
 - [GNU Bash Reference Manual：Basic Shell Features](https://www.gnu.org/software/bash/manual/html_node/Basic-Shell-Features.html)
-
