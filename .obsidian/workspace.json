@@ -11,14 +11,13 @@
             "id": "644ea29bc0bda851",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "bases",
               "state": {
-                "file": "01-软件开发基础/内网、公网与私有化服务器部署.md",
-                "mode": "source",
-                "source": false
+                "file": "未命名 1.base",
+                "viewName": "表格"
               },
-              "icon": "lucide-file",
-              "title": "内网、公网与私有化服务器部署"
+              "icon": "lucide-table",
+              "title": "未命名 1"
             }
           }
         ]
@@ -55,7 +54,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "锁",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -167,13 +166,23 @@
               "icon": "lucide-list",
               "title": "大纲"
             }
+          },
+          {
+            "id": "fddfd0a87f6d8ead",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -187,8 +196,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "644ea29bc0bda851",
+  "active": "313888fccf46009c",
   "lastOpenFiles": [
+    "未命名.base",
+    "未命名 1.base",
+    "2026-09-14.md",
+    "未命名 3.canvas",
+    "01-软件开发基础/内网、公网与私有化服务器部署.md",
     "00-导航/计算机知识库总索引.md",
     "01-软件开发基础/TCP、HTTP、HTTPS与WebSocket.md",
     "02-Web前端与界面/Toast提示.md",
@@ -214,9 +228,6 @@
     "01-软件开发基础/防火墙与端口对外开放.md",
     "05-AI-Agent与框架/Prompt Engineering与Loop Engineering.md",
     "05-AI-Agent与框架/DI容器、Pi与轻量钩子方案.md",
-    "01-软件开发基础/Docker容器与DI容器：运行隔离和对象装配.md",
-    "02-Web前端与界面/React前端技术栈：Vite、Router、Zustand与PWA.md",
-    "01-软件开发基础/开发、测试、预发布与生产环境.md",
     "未命名.canvas",
     "06-项目与产品",
     "05-AI-Agent与框架",
