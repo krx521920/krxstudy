@@ -8,7 +8,7 @@ tags:
   - Agent
   - 框架
 created: 2026-08-16
-updated: 2026-08-17
+updated: 2026-09-14
 verified: 2026-08-17
 ---
 
@@ -159,6 +159,7 @@ LangChain（组织模型、工具、流程）
 
 ## 关联概念
 
+- [[Dify：可视化AI应用、知识库与工作流平台|Dify]]：提供可视化配置、应用发布和运行管理；LangChain 更偏代码框架，两者都能组织模型应用，但不是同一种产品。
 - [[MCP模型上下文协议]]：MCP 负责 Host 与外部资料/工具程序之间的标准通信；LangChain 负责在应用内部组织模型、状态、工具和 Agent 流程，两者位于不同层次。
 - [[SDK与API]]：LangChain 常通过模型 SDK 或 Web API 访问模型服务。
 - [[Prompt Engineering与Loop Engineering]]：LangChain 可承载 Prompt 和 Agent loop，但不会自动保证循环可靠。
