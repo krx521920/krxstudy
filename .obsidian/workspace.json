@@ -4,38 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "1ae4bb5759537c8c",
+        "id": "df6b841e4d456c4d",
         "type": "tabs",
         "children": [
           {
-            "id": "644ea29bc0bda851",
+            "id": "76deb324db42e267",
             "type": "leaf",
             "state": {
-              "type": "bases",
-              "state": {
-                "file": "魏某人计算机成长日记.base",
-                "viewName": "表格"
-              },
-              "icon": "lucide-table",
-              "title": "魏某人计算机成长日记"
-            }
-          },
-          {
-            "id": "face899d44672293",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "祝总营养品业务知识.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "祝总营养品业务知识"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -210,12 +192,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "face899d44672293",
+  "active": "76deb324db42e267",
   "lastOpenFiles": [
-    "01-软件开发基础/Termux：Android上的终端与Linux工具环境.md",
-    "魏某人计算机成长日记.base",
-    "祝总营养品业务知识.md",
     "未命名.base",
+    "祝总营养品业务知识.md",
+    "魏某人计算机成长日记.base",
+    "01-软件开发基础/Termux：Android上的终端与Linux工具环境.md",
     "2026-09-14.md",
     "未命名 3.canvas",
     "01-软件开发基础/内网、公网与私有化服务器部署.md",
@@ -242,7 +224,6 @@
     "未命名 1.canvas",
     "05-AI-Agent与框架/Preset与Agent Trajectory.md",
     "01-软件开发基础/防火墙与端口对外开放.md",
-    "05-AI-Agent与框架/Prompt Engineering与Loop Engineering.md",
     "未命名.canvas",
     "06-项目与产品",
     "05-AI-Agent与框架",
