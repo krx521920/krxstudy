@@ -19,6 +19,9 @@ verified: 2026-08-29
 
 # React组件化前端开发
 
+> [!note] 与智能体 ReAct 区分
+> 本篇的 **React** 是界面库；Agent 领域的 **ReAct** 指 Reasoning + Acting（推理与行动相结合）的模式。二者名称相近但不是同一个技术，详见 [[ReAct：推理、行动与观察的Agent模式]]。辨析补充于 2026-09-15，不改变本篇其他内容的原核对日期。
+
 > [!summary] 一句话解释
 > **React（读作“瑞艾克特”）是一个使用 JavaScript/TypeScript 构建用户界面的库：开发者把界面拆成组件，用 Props 提供外部输入、用 State 记录内部状态，React 根据状态重新计算界面并把必要变化提交给浏览器。**
 

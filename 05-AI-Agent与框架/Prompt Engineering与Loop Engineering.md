@@ -11,7 +11,7 @@ tags:
   - Prompt
   - LoopEngineering
 created: 2026-08-16
-updated: 2026-08-17
+updated: 2026-09-15
 verified: 2026-08-17
 ---
  
@@ -221,6 +221,7 @@ Loop 的价值不是“让模型无限尝试”，而是让每次尝试都有真
 
 ## 和其他笔记的关系
 
+- [[ReAct：推理、行动与观察的Agent模式]]：把推理与工具行动交织，并根据实际观察继续推进；不要与前端 React 混淆。
 - [[LangChain]] 提供构建 Agent Harness 的高层能力。
 - [[DeepSeek Harness、Everything is a Plugin与Cordis]] 把模型、工具、循环和权限等都设计为可组合插件。
 - [[Agent工具运行时：执行流水线、并发调度与Code Mode]] 解释一次工具调用怎样经过审批、Guard 和调度。
