@@ -13,7 +13,7 @@ tags:
   - UI
   - React
 created: 2026-08-29
-updated: 2026-08-29
+updated: 2026-09-15
 verified: 2026-08-29
 ---
 
@@ -1370,6 +1370,7 @@ TodoItem通过onToggle回调通知TodoApp更新
 
 ## 三十一、相关概念
 
+- [[Relay：React与GraphQL的数据管理|Relay]]：为 React 应用组织 GraphQL 数据获取、共享缓存与更新；它不是界面库，也不是 React 的必需依赖。
 - [[HTML]]：React DOM 最终创建的网页结构基础。
 - [[CSS]]：React 组件仍需要 CSS 完成样式和布局。
 - [[TypeScript与JavaScript]]：React 组件、事件、异步和 TSX 的语言基础。
