@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01-软件开发基础/贝尔实验室与计算机通信技术史.md",
+                "file": "02-Web前端与界面/React组件化前端开发.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "贝尔实验室与计算机通信技术史"
+              "title": "React组件化前端开发"
             }
           }
         ]
@@ -55,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "langch",
+                "query": "react",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -197,8 +197,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "313888fccf46009c",
+  "active": "55fe0102fd68eab2",
   "lastOpenFiles": [
+    "krxstudy/00-导航/计算机知识库总索引.md",
+    "krxstudy/01-软件开发基础/常见编程语言及其用途.md",
+    "04-AI应用基础/LangChain.md",
+    "01-软件开发基础/贝尔实验室与计算机通信技术史.md",
     "00-导航/计算机知识库总索引.md",
     "krxstudy/06-项目与产品/Otto使用技术学习地图.md",
     "krxstudy/06-项目与产品/Otto产品总体技术架构.md",
@@ -223,11 +227,7 @@
     "krxstudy/02-Web前端与界面/Tauri跨平台桌面应用架构.md",
     "krxstudy/02-Web前端与界面/React组件化前端开发.md",
     "krxstudy/02-Web前端与界面/React前端技术栈：Vite、Router、Zustand与PWA.md",
-    "krxstudy/02-Web前端与界面/HTML.md",
-    "krxstudy/02-Web前端与界面/Electron桌面应用架构.md",
-    "krxstudy/02-Web前端与界面/CSS.md",
     "krxstudy/02-Web前端与界面",
-    "krxstudy/00-导航/计算机知识库总索引.md",
     "krxstudy/00-导航",
     "krxstudy/魏某人计算机成长日记.base",
     "krxstudy/未命名.canvas",
