@@ -178,6 +178,10 @@ React 页面：输入问题、展示回答与审核按钮
 
 记忆句：**LangChain 偏模型与智能体组件，LangGraph 偏流程与状态运行基础，Mastra 偏 TypeScript 智能体应用的整合式开发框架。**
 
+## 真实产品案例
+
+公开案例包括 Salesforce Agentforce Vibes 的部分模型运行路径、Sanity Content Agent，以及 Replit Agent 3 为用户生成并运行的智能体应用。尤其不能把“生成的应用使用 Mastra”直接等同于“Replit 自身全部基于 Mastra”。来源与边界见 [[LangChain、LangGraph与Mastra：真实产品与公开案例]]。
+
 ## 关联笔记与参考资料
 
 先理解 [[Agent Harness：模型之外的运行系统]]、[[LangChain]] 和 [[LangGraph：有状态工作流与LangChain的区别]]，再结合 [[TypeScript与JavaScript]]、[[Node.js与pnpm]] 阅读 Mastra 示例。

@@ -185,6 +185,10 @@ Mastra 是以 TypeScript 为中心的整合式智能体应用框架，也提供�
 - **“LangGraph 自带一个更聪明的模型。”** 两者都不是模型；更好的流程可以改善系统表现，但不等于模型参数变强。
 - **“用了 LangGraph 就不会失败。”** 工具错误、模型错误、无限循环、权限和重复执行仍需要开发者处理。
 
+## 真实产品案例
+
+LinkedIn Hiring Assistant、Klarna AI Assistant 和 Replit Agent 的历史公开案例，都有具体的 LangGraph 使用说明。产品功能、内部工具和不同版本需要分开看，详见 [[LangChain、LangGraph与Mastra：真实产品与公开案例]]。
+
 ## 学习建议与关联概念
 
 先学会一次模型调用和一个普通函数工具，再理解 [[ReAct：推理、行动与观察的Agent模式]]。接着用 [[LangChain]] 组织简单助手；出现具体的流程控制需求后，再学习 LangGraph 的状态、节点、边和恢复机制。
