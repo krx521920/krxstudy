@@ -8,7 +8,7 @@ tags:
   - Agent
   - 框架
 created: 2026-08-16
-updated: 2026-09-15
+updated: 2026-09-16
 verified: 2026-08-17
 ---
 
@@ -55,7 +55,7 @@ Agent = Model + Harness
 ```
 
 - **Model**：负责语言理解和生成。
-- **Harness**：围绕模型循环的外部运行系统，包括提示词、工具和影响行为的 middleware（中间件）。
+- **Harness**：围绕模型循环的外部运行系统，包括提示词、工具和影响行为的 middleware（中间件）。具体分工和例子见 [[Agent Harness：模型之外的运行系统]]。
 
 `create_agent` 可以把模型、工具和系统提示词组合起来：
 
