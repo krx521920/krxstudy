@@ -114,11 +114,19 @@ Agent 可以根据当前目标和观察结果决定下一步调用什么工具�
 | 名称 | 简化理解 |
 |---|---|
 | LangChain | 高层组件与可配置 Agent Harness，适合快速组合模型、工具和中间件 |
-| LangGraph | 更底层的编排框架，适合显式状态、持久运行和复杂工作流 |
+| LangGraph | 更底层的编排框架与运行时，适合显式状态、持久运行和复杂工作流 |
 | LangSmith | 追踪、调试、评估和观察模型/Agent 运行过程的工具 |
 | Deep Agents | 在 LangChain 之上提供更多开箱即用能力的 Agent 方案 |
 
-截至 2026-08，LangChain Agent 构建在 LangGraph 之上，借助其持久执行、状态和 human-in-the-loop 等能力。
+补充核对日期：2026-09-16。LangChain Agent 构建在 LangGraph 之上，借助其持久执行、状态和 human-in-the-loop（人工介入流程）等能力。这不代表 LangChain 的每一项普通模型调用都必须经过一个图，也不代表 LangGraph 必须使用 LangChain 的高层组件。
+
+## LangChain 与 LangGraph 怎么选
+
+**LangChain 更偏“使用现成组件搭建助手”，LangGraph 更偏“亲自设计助手与业务步骤怎样执行”。**两者不是旧版与新版，也不是“链只能直行、图才能循环”。LangChain Agent 本身就能循环使用工具，并支持状态和人工介入等能力。
+
+如果通用的模型—工具循环符合需求，可以先使用 LangChain；如果需要细致设计分支、循环、审核、并行及恢复机制，可以直接使用 LangGraph，也可以把 LangChain 助手放进 LangGraph 的某个步骤。简单的一次模型调用则未必需要任何一个框架。
+
+状态、节点、边的通俗解释，以及课程通知审核的完整例子，统一放在 [[LangGraph：有状态工作流与LangChain的区别]]，避免两篇重复维护全部细节。
 
 ## LangChain 不是什么
 
@@ -176,4 +184,5 @@ LangChain（组织模型、工具、流程）
 ## 参考资料
 
 - [LangChain 官方文档：Overview](https://docs.langchain.com/oss/python/langchain/overview)
+- [LangGraph 官方文档：Overview](https://docs.langchain.com/oss/python/langgraph/overview)：2026-09-16 补充核对两者关系。
 - [LangChain 官方文档：Retrieval](https://docs.langchain.com/oss/python/langchain/retrieval)

@@ -124,6 +124,7 @@ Harness 是普通英文单词，不是缩写，读音约为“哈尼斯”，美
 | ReAct | 怎样交替进行推理、行动和观察？ | 是工作模式，可以由 Harness 支持；不是整个运行系统 |
 | Agent（智能体） | 哪个完整系统围绕目标开展工作？ | 通常由模型与运行支撑、工具等共同组成 |
 | LangChain | 用什么开发组件组织模型应用？ | 其 Agent 组件提供可配置的 Harness 能力 |
+| LangGraph | 怎样显式安排步骤、分支和状态变化？ | 提供构建和定制 Harness 所需的流程编排与运行基础 |
 | Dify | 在什么平台搭建、配置和运行应用？ | 是更完整的应用平台，内部有智能体运行能力，不只是一个循环 |
 | MCP | 不同程序怎样以统一方式交换上下文、连接工具？ | 是 Harness 可以使用的接入协议，不是完整任务运行系统 |
 
@@ -132,6 +133,8 @@ Harness 是普通英文单词，不是缩写，读音约为“哈尼斯”，美
 **MCP = Model Context Protocol，模型上下文协议，逐字母读 M-C-P。**[MCP 官方架构说明](https://modelcontextprotocol.io/docs/learn/architecture)明确区分了协议与应用如何使用模型、管理上下文；因此“接上 MCP”并不等于完整实现了 Harness。
 
 框架、运行时和 Harness 这些称呼会有重叠：框架强调供开发者使用的组织方式，运行时强调执行期间的支撑，Harness 强调围绕核心能力的配套。不要把它们当成处处互斥的产品类别。
+
+两者怎样组合，以及为什么 LangChain Agent 本身就使用 LangGraph，详见 [[LangGraph：有状态工作流与LangChain的区别]]。
 
 ## Harness Engineering 又是什么
 
