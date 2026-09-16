@@ -128,6 +128,8 @@ Agent 可以根据当前目标和观察结果决定下一步调用什么工具�
 
 状态、节点、边的通俗解释，以及课程通知审核的完整例子，统一放在 [[LangGraph：有状态工作流与LangChain的区别]]，避免两篇重复维护全部细节。
 
+如果还在比较 Mastra，见 [[Mastra：TypeScript智能体框架与LangChain、LangGraph对比]]。Mastra 把智能体、工作流及开发管理能力组织在同一套 TypeScript 体系中；LangChain 和 LangGraph 也有 JavaScript/TypeScript 版本，不能按“Python 对 TypeScript”简单区分。
+
 ## LangChain 不是什么
 
 - 不是一个模型；

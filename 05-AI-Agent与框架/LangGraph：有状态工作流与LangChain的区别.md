@@ -171,6 +171,12 @@ LangGraph 可以通过 `interrupt()` 暂停等待人工输入。但恢复时，�
 
 不要因为流程有一个分支就认为必须引入 LangGraph；少量普通代码也能实现简单流程。框架的价值应当大于新增的学习、测试与维护成本。
 
+## 加入 Mastra 后怎样比较
+
+Mastra 是以 TypeScript 为中心的整合式智能体应用框架，也提供工作流、分支、循环、暂停恢复和开发工作台，不能简单当成“只能做轻量聊天的 LangChain 替代品”。LangChain 和 LangGraph 同样有 JavaScript/TypeScript 版本，因此区别不只是语言。
+
+这里比较的是不同开发结构与职责范围，不是“Mastra 与 LangGraph 谁必然更强”。完整对照、同一课程通知案例和迁移注意事项见 [[Mastra：TypeScript智能体框架与LangChain、LangGraph对比]]，核对日期为 2026-09-16。
+
 ## 常见误区
 
 - **“LangGraph 取代了 LangChain。”** 它们职责不同，当前 LangChain Agent 就使用 LangGraph 作为底层。
