@@ -12,7 +12,7 @@ tags:
   - LangGraph
   - 技术选型
 created: 2026-09-16
-updated: 2026-09-16
+updated: 2026-09-17
 verified: 2026-09-16
 ---
 
@@ -51,6 +51,8 @@ Agent 指智能体。开发者为它指定模型、行为要求和工具，让�
 ### Workflow：让开发者规定工作流程
 
 Workflow 是工作流。你可以把业务拆成步骤，并说明每步接收什么数据、返回什么数据、接下来走哪里。
+
+通用概念详解见 [[LangGraph：有状态工作流与LangChain的区别#Agent 的 Workflow 主要做什么|Agent 的 Workflow 主要做什么]]：包括数据传递、分支并行、人工确认、失败处理，以及工作流和 Agent 自主判断怎样配合。这些职责并不限于某一个框架。
 
 Mastra 支持串行、并行、条件分支与循环，也支持在步骤中调用智能体或普通工具。因此不能说“Mastra 只能做简单聊天，复杂流程只能用 LangGraph”。[工作流概览](https://mastra.ai/docs/workflows/overview)、[控制流程说明](https://mastra.ai/docs/workflows/control-flow)
 
