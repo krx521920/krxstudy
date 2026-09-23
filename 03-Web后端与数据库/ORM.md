@@ -8,7 +8,7 @@ tags:
   - Web后端
   - ORM
 created: 2026-08-16
-updated: 2026-09-08
+updated: 2026-09-23
 ---
 
 # ORM
@@ -143,6 +143,10 @@ python manage.py migrate
 - ORM 不是 [[SDK与API|Web API]]；
 - ORM 不保证查询一定高效；
 - ORM 不能代替合理的数据建模。
+
+## 补充：MyBatis 与 ORM 的关系
+
+Java 生态的 [[MyBatis：SQL映射与Java数据库访问|MyBatis]] 更强调开发者指定 SQL，再映射参数和查询结果。它常被称为 SQL 映射／持久化框架，也有人用“半自动 ORM”作类比，但不能据此认为它会像某些完整 ORM 一样自动生成所有查询、创建业务表或管理表结构迁移。核对日期：2026-09-23，[MyBatis 官方介绍](https://mybatis.org/mybatis-3/index.html)。
 
 ## 初学建议
 
