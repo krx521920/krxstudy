@@ -12,7 +12,7 @@ tags:
   - DNS
   - 浏览器安全
 created: 2026-08-21
-updated: 2026-08-21
+updated: 2026-09-24
 verified: 2026-08-21
 ---
 
@@ -150,6 +150,8 @@ https://app.example.com:443
 某些跨站请求即使页面读不到响应，也可能已经对服务端产生副作用。
 
 ## Cookie 安全属性
+
+如果还不理解 Cookie 如何设置、怎样维持登录，先看 [[Cookie、Session与登录状态]]；该笔记提供前端与 Spring Boot 示例、调试步骤，并区分同站与同来源。本次仅补充学习入口，以下原有安全主题未作整篇重新核验。
 
 ### HttpOnly
 
