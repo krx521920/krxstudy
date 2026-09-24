@@ -11,10 +11,14 @@
             "id": "55fe0102fd68eab2",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "关系图谱"
+              "type": "markdown",
+              "state": {
+                "file": "krxstudy/02-Web前端与界面/WebView.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "WebView"
             }
           }
         ]
@@ -51,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "react",
+                "query": "浏览器",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -195,6 +199,10 @@
   },
   "active": "55fe0102fd68eab2",
   "lastOpenFiles": [
+    "02-Web前端与界面/WebView.md",
+    "krxstudy/01-软件开发基础/Windows UAC与管理员权限提升.md",
+    "01-软件开发基础/Windows UAC与管理员权限提升.md",
+    "01-软件开发基础/常见编程语言及其用途.md",
     "02-Web前端与界面/React组件化前端开发.md",
     "05-AI-Agent与框架/ReAct：推理、行动与观察的Agent模式.md",
     "02-Web前端与界面/Relay：React与GraphQL的数据管理.md",
@@ -219,10 +227,6 @@
     "krxstudy/05-AI-Agent与框架/Agent评测：上下文成本、轨迹与独立验收.md",
     "krxstudy/05-AI-Agent与框架/Agent工具运行时：执行流水线、并发调度与Code Mode.md",
     "krxstudy/05-AI-Agent与框架",
-    "krxstudy/02-Web前端与界面/渲染逻辑.md",
-    "krxstudy/02-Web前端与界面/WebView.md",
-    "krxstudy/02-Web前端与界面/Webpack与HMR.md",
-    "krxstudy/02-Web前端与界面/Toast提示.md",
     "krxstudy/02-Web前端与界面",
     "krxstudy/00-导航",
     "krxstudy/魏某人计算机成长日记.base",
