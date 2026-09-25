@@ -51,7 +51,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "浏览器",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -195,6 +195,9 @@
   },
   "active": "55fe0102fd68eab2",
   "lastOpenFiles": [
+    "00-导航/计算机知识库总索引.md",
+    "2026-09-25.md",
+    "未命名.canvas",
     "krxstudy/02-Web前端与界面/WebView.md",
     "02-Web前端与界面/WebView.md",
     "krxstudy/01-软件开发基础/Windows UAC与管理员权限提升.md",
@@ -207,7 +210,6 @@
     "krxstudy/01-软件开发基础/常见编程语言及其用途.md",
     "04-AI应用基础/LangChain.md",
     "01-软件开发基础/贝尔实验室与计算机通信技术史.md",
-    "00-导航/计算机知识库总索引.md",
     "krxstudy/06-项目与产品/Otto使用技术学习地图.md",
     "krxstudy/06-项目与产品/Otto产品总体技术架构.md",
     "krxstudy/06-项目与产品/Otto与Otto USB对比及重点摘要.md",
@@ -220,8 +222,6 @@
     "krxstudy/05-AI-Agent与框架/DeepSeek Harness、Everything is a Plugin与Cordis.md",
     "krxstudy/05-AI-Agent与框架/DI容器、Pi与轻量钩子方案.md",
     "krxstudy/05-AI-Agent与框架/Control Plane、Data Plane、Edge Gateway与Federation.md",
-    "krxstudy/05-AI-Agent与框架/Cordis运行时机制：Fiber、Effect与Scope.md",
-    "krxstudy/05-AI-Agent与框架/Agent评测：上下文成本、轨迹与独立验收.md",
     "krxstudy/05-AI-Agent与框架",
     "krxstudy/02-Web前端与界面",
     "krxstudy/00-导航",
@@ -237,7 +237,6 @@
     "krxstudy/03-Web后端与数据库/SQL练习",
     "未命名 1.canvas",
     "未命名 2.canvas",
-    "未命名 3.canvas",
-    "未命名.canvas"
+    "未命名 3.canvas"
   ]
 }
