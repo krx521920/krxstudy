@@ -11,10 +11,14 @@
             "id": "55fe0102fd68eab2",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "关系图谱"
+              "type": "markdown",
+              "state": {
+                "file": "01-软件开发基础/边缘计算模块与边缘网关.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "边缘计算模块与边缘网关"
             }
           }
         ]
@@ -51,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "网关",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -195,6 +199,8 @@
   },
   "active": "55fe0102fd68eab2",
   "lastOpenFiles": [
+    "05-AI-Agent与框架/Control Plane、Data Plane、Edge Gateway与Federation.md",
+    "krxstudy/01-软件开发基础/边缘计算模块与边缘网关.md",
     "00-导航/计算机知识库总索引.md",
     "2026-09-25.md",
     "未命名.canvas",
@@ -221,7 +227,6 @@
     "krxstudy/05-AI-Agent与框架/MCP模型上下文协议.md",
     "krxstudy/05-AI-Agent与框架/DeepSeek Harness、Everything is a Plugin与Cordis.md",
     "krxstudy/05-AI-Agent与框架/DI容器、Pi与轻量钩子方案.md",
-    "krxstudy/05-AI-Agent与框架/Control Plane、Data Plane、Edge Gateway与Federation.md",
     "krxstudy/05-AI-Agent与框架",
     "krxstudy/02-Web前端与界面",
     "krxstudy/00-导航",
