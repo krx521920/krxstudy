@@ -13,7 +13,7 @@ tags:
   - UI
   - React
 created: 2026-08-29
-updated: 2026-09-15
+updated: 2026-10-01
 verified: 2026-08-29
 ---
 
@@ -1093,6 +1093,8 @@ React Native 使用 React 模型构建手机应用，但主要对应原生平台
 ```
 
 它通常不是把完整网页塞进 [[WebView]]。React Native 和 React Web 会共享部分组件思想、JavaScript/TypeScript 和状态逻辑，但布局、组件、平台 API 和构建发布不同。
+
+进一步阅读 [[React Native原生应用与WebView方案对比]]：从原生界面、代码复用、手机能力、Expo，以及它与 Capacitor/Tauri 的区别逐层理解。该关联笔记核对于 2026-10-01；本篇其他内容保留原核对日期。
 
 ### Electron
 
