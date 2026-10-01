@@ -51,6 +51,9 @@ React Native 近似读作“瑞艾克特·内替夫”，常缩写为 **RN**，�
 
 应用运行时，需要 JavaScript 引擎执行相关逻辑。React Native 当前默认使用 Hermes；它是为 React Native 优化的 JavaScript 引擎，不是浏览器。使用 JavaScript 并不意味着应用必须内置完整浏览器，也不意味着手机里必须安装 Node.js。[Hermes 官方说明](https://reactnative.dev/docs/hermes)
 
+> [!note] 同名辨析
+> 这里的 Hermes 是 Meta 的 JavaScript 引擎，不是 Nous Research 的 Hermes Agent 智能体，也不是 Hermes 大模型。详见 [[Hermes同名辨析：JavaScript引擎、智能体与模型]]。
+
 不要理解成“React Native 会把所有 JavaScript 自动翻译成 Swift 或 Kotlin”。应用通常同时包含 JavaScript 逻辑、运行引擎和原生代码。
 
 ### 2. 界面由哪些组件组成
