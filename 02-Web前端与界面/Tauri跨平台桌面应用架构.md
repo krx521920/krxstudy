@@ -3,6 +3,7 @@ title: Tauri跨平台桌面应用架构
 aliases:
   - Tauri
   - Tauri 2
+  - Tauri2
   - Tauri桌面应用
   - Rust桌面应用框架
 tags:
@@ -12,7 +13,7 @@ tags:
   - Rust
   - WebView
 created: 2026-08-29
-updated: 2026-08-29
+updated: 2026-10-01
 verified: 2026-08-29
 ---
 
@@ -21,7 +22,23 @@ verified: 2026-08-29
 > [!summary] 一句话解释
 > **Tauri 是一个用 Web 技术制作界面、用 Rust 实现原生核心和系统能力的跨平台应用框架；它通常复用操作系统自带的 WebView，因此安装包往往比把 Chromium 一起打包的 Electron 小。**
 
-Tauri 不是英文缩写，而是项目名称。它主要用于开发 Windows、macOS 和 Linux 桌面应用；Tauri 2 也把 Android 和 iOS 纳入了支持范围，但具体插件是否支持移动端仍需单独检查。
+Tauri 不是英文缩写，而是项目名称。Tauri 2 支持 Windows、macOS、Linux、Android 和 iOS，具体插件是否支持目标平台仍需单独检查。本文沿用桌面应用作为主要例子，不表示 Tauri 2 只能用于电脑。
+
+## 先补充：Tauri 2 的“2”是什么意思
+
+本节于 **2026-10-01** 按官方文档补充核对。
+
+**“2”是第二个主要版本系列，不是一种新语言，也不是安装两个 Tauri。** 对初学者最重要的是三点：
+
+1. **包含移动端支持**：Android、iOS 也是目标平台；但桌面上的窗口、托盘、文件路径等能力不能不加适配地搬到手机上。
+2. **新的权限配置体系**：Capability（能力配置）可以为指定窗口或 WebView 组合权限；它控制应用内部的能力调用，不代替操作系统的权限规则或用户授权。
+3. **旧教程需要辨别版本**：Tauri 1 的部分接口和配置在 Tauri 2 中迁移到插件或换了写法，不能只改版本号就假定迁移完成。
+
+用一句更直白的话描述：**界面可以继续用网页技术写，本机功能通过 Tauri 连接到 Rust 或平台插件。** 所谓 Rust“后端”通常在用户设备里运行，不是自动部署到远程服务器。
+
+移动插件可以涉及 Kotlin/Java 和 Swift，因此“用 Tauri”也不等于“所有平台问题都用一份 Rust 代码自动解决”。与另一个 Web 转应用方案的完整对比见 [[Capacitor移动应用与Tauri 2对比]]。
+
+[Tauri 官方介绍](https://v2.tauri.app/start/)、[移动插件开发](https://v2.tauri.app/develop/plugins/develop-mobile/)、[权限能力配置](https://v2.tauri.app/security/capabilities/)、[从 Tauri 1 迁移](https://v2.tauri.app/start/migrate/from-tauri-1/)
 
 ---
 
@@ -694,6 +711,7 @@ IPC和权限系统负责控制二者怎样连接
 ## 二十、关联概念
 
 - [[WebView]]：Tauri 界面实际运行的网页容器。
+- [[Capacitor移动应用与Tauri 2对比]]：比较移动原生容器、Rust 核心和 PWA 路线，理解插件、代码复用与平台适配。
 - [[Electron桌面应用架构]]：另一条主流 Web 桌面应用路线。
 - [[React组件化前端开发]]：Tauri 可选的前端界面库。
 - [[TypeScript与JavaScript]]：常见前端语言。
@@ -710,7 +728,7 @@ IPC和权限系统负责控制二者怎样连接
 
 ## 参考资料
 
-以下内容于 **2026-08-29** 按 Tauri 2 官方文档核对：
+原有架构内容于 **2026-08-29** 按 Tauri 2 官方文档核对；版本入门、移动插件与 Capacitor 对比入口于 **2026-10-01** 补充核对，本次未重新运行旧示例或全面复核所有插件：
 
 - [Tauri Architecture](https://v2.tauri.app/concept/architecture/)
 - [Tauri Process Model](https://v2.tauri.app/concept/process-model/)
@@ -726,3 +744,6 @@ IPC和权限系统负责控制二者怎样连接
 - [Embedding External Binaries / Sidecar](https://v2.tauri.app/develop/sidecar/)
 - [Distribute](https://v2.tauri.app/distribute/)
 - [Updater](https://v2.tauri.app/plugin/updater/)
+- [What is Tauri?](https://v2.tauri.app/start/)
+- [Mobile Plugin Development](https://v2.tauri.app/develop/plugins/develop-mobile/)
+- [Upgrade from Tauri 1.0](https://v2.tauri.app/start/migrate/from-tauri-1/)
