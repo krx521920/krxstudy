@@ -1,9 +1,9 @@
 ---
 title: CDN内容分发网络：边缘缓存、回源与加速
-aliases: [CDN, 内容分发网络, Content Delivery Network, CDN缓存, CDN回源, CDN接入, CDN节点建设]
+aliases: [CDN, 内容分发网络, Content Delivery Network, CDN缓存, CDN回源, CDN接入, CDN节点建设, ESA, 边缘安全加速]
 tags: [计算机网络, CDN, 缓存, 网站架构, 性能]
 created: 2026-09-11
-updated: 2026-09-11
+updated: 2026-10-02
 verified: 2026-09-11
 ---
 
@@ -447,6 +447,53 @@ CloudFront 文档明确区分“分发配置到边缘接入点”和“分发内
 
 本篇只解释原理，没有修改域名、证书、代理或线上缓存规则；所有地址、数字与响应头均为教学示例。
 
+## 十五、ESA：把加速、安全与边缘能力组合起来
+
+本节核对日期：2026-10-02；此前各节保留原核对日期。
+
+**ESA（Edge Security Acceleration，边缘安全加速，按字母读 E-S-A）** 在本节指阿里云的产品。它把内容加速、安全防护、DNS 管理和边缘计算等能力整合到一个服务中，不是一种独立的网络协议，也不是所有 CDN 的通用名称。[ESA 概述](https://help.aliyun.com/zh/edge-security-acceleration/esa/product-overview/what-is-esa)
+
+### “边缘”“安全”“加速”分别指什么
+
+- **边缘**：在靠近用户接入网络的位置提供服务；不等于仅按地理距离选择最近的机器。
+- **加速**：缓存可复用内容、优化传输路径和连接等。登录、下单等动态请求仍可能需要源站处理，不能简单把所有响应共享缓存。
+- **安全**：按套餐和配置提供恶意请求识别、流量攻击缓解、机器人访问管理等能力，不是对所有攻击的绝对免疫。
+
+两个常见缩写：**WAF 是 Web Application Firewall（Web 应用防火墙）**，主要按规则分析网页请求等应用层流量；**DDoS 是 Distributed Denial of Service（分布式拒绝服务攻击）**，常见表现是大量来源制造流量或请求来耗尽服务资源。[ESA 能力说明](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/support/issues-related-to-product-characteristics)
+
+生活类比：普通缓存节点像“各地配送仓”，ESA 则在交付入口整合了“接待、配送和安检”等功能。能拦什么、容量多大，仍要看实际服务能力、规则和攻击类型。
+
+### DNS 接入不等于代理已经开启
+
+常见接入方式有：
+
+- **NS（Name Server，名称服务器）接入**：更换域名的权威名称服务器，把权威解析交给指定服务；切换前需要完整核对已有解析记录，避免影响网站、邮箱等业务。
+- **CNAME（Canonical Name，规范名称）接入**：按平台要求设置域名别名记录，可以保留原有 DNS 服务商；具体支持范围和限制以文档为准。
+
+二者都需要核对实际接入和记录状态。仅在控制台添加站点、或将记录设为 **DNS-only（仅 DNS 解析）**，不代表网页请求已经经过 ESA 边缘代理，也不自动获得代理层的缓存和防护。[ESA 接入说明](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/getting-started/add-your-website-to-esa)
+
+### 浏览器与源站之间可能有两段 TLS
+
+在常规网页代理模式下，可用以下简化路径理解：
+
+```text
+浏览器 ← 第一段加密连接 → ESA 边缘节点 ← 第二段加密连接 → 源站
+```
+
+**TLS 是 Transport Layer Security（传输层安全协议）**。边缘证书用于浏览器与 ESA 之间的身份验证和安全连接；ESA 回源时使用什么协议、是否验证源站证书，则需要另行确认。[ESA 证书与回源配置说明](https://help.aliyun.com/zh/edge-security-acceleration/esa/user-guide/first-level-node-1)
+
+因此，“边缘证书已部署”不等于“源站也有合格证书”，更不等于“两段通信必然都按正确策略加密并验证”。在边缘终止 TLS、处理网页请求的模式下，边缘服务可以处理解密后的内容，也不是对该服务商保密的端到端加密。
+
+### 它不能代替哪些东西
+
+- 不代替域名注册、续费和注册局锁；这些属于域名管理层。
+- 不会自动修复业务代码中的全部漏洞，也不代替账号权限、数据备份等措施。
+- 不会因开通就自动生成完整网站或业务后端；即使使用边缘函数或托管能力，也仍需开发、配置相应业务。
+- 不保证隐藏源站后无人能绕过它；源站访问限制需要另外设计，不能无准备地修改线上防火墙。
+- 不保证所有内容都应该缓存：账户、订单、个人资料等响应必须谨慎处理。
+
+如果是在域名控制台看到 WHOIS、证书、DNS、注册局安全锁与 ESA 并排出现，先阅读 [[域名管理：WHOIS、RDAP、状态码与注册局安全锁]]，理解它们分别保护哪一层。本次只补充原理，没有接入或调整任何线上服务。
+
 ## 参考资料
 
 核对日期：2026-09-11。产品资料用于说明机制；不把某个平台的默认规则、节点数量或付费功能泛化到所有 CDN。
@@ -467,3 +514,10 @@ CloudFront 文档明确区分“分发配置到边缘接入点”和“分发内
 - [腾讯云 EdgeOne：官方产品概述](https://edgeone.ai/zh/document/45961)
 - [Cloudflare：CDN 产品入口](https://www.cloudflare.com/products/cdn/)
 - [Amazon：CloudFront 产品入口](https://aws.amazon.com/cloudfront/)
+
+2026-10-02 补充核对的 ESA 资料：
+
+- [阿里云：ESA 产品概述](https://help.aliyun.com/zh/edge-security-acceleration/esa/product-overview/what-is-esa)
+- [Alibaba Cloud：ESA 加速与安全能力](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/support/issues-related-to-product-characteristics)
+- [Alibaba Cloud：ESA 接入与 DNS-only](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/getting-started/add-your-website-to-esa)
+- [阿里云：ESA 证书与回源安全配置](https://help.aliyun.com/zh/edge-security-acceleration/esa/user-guide/first-level-node-1)
