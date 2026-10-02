@@ -51,7 +51,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "网关",
+                "query": "虚拟w",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -193,7 +193,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "55fe0102fd68eab2",
+  "active": "313888fccf46009c",
   "lastOpenFiles": [
     "05-AI-Agent与框架/Hermes同名辨析：JavaScript引擎、智能体与模型.md",
     "01-软件开发基础/Monorepo与多项目仓库管理.md",
