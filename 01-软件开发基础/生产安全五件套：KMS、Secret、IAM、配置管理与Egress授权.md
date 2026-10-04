@@ -225,6 +225,7 @@ credential_reference = prod/model-access
 
 ## 关联概念
 
+- [[S3与MinIO对象存储]]：用文件上传场景理解对象权限、访问凭据、加密密钥与出站边界怎样配合。
 - [[密钥管理：DEK、KEK、KMS、HSM与信封加密]]：加密密钥的层级、轮换与恢复。
 - [[身份认证与授权：ACL、RBAC、MFA、OAuth、OIDC、SAML与SCIM]]：人和服务的身份、角色与资源授权。
 - [[开发、测试、预发布与生产环境]]：环境隔离、配置变更与正式凭据。
