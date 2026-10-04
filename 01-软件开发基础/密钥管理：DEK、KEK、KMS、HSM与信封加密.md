@@ -13,7 +13,7 @@ tags:
   - HSM
   - 密码学
 created: 2026-08-21
-updated: 2026-08-21
+updated: 2026-10-04
 verified: 2026-08-21
 ---
 
@@ -104,6 +104,14 @@ flowchart LR
 - 撤销和禁用。
 
 KMS 可以是云服务，也可以是自建系统。
+
+### KMS 和 Secret 管理不是同一件事
+
+**Secret 管理（Secrets Management，机密信息管理）**主要管理数据库密码、第三方 API Key、访问令牌等秘密的保存、交付、轮换与撤销；KMS 主要管理加密密钥及允许的密码运算。Secret 管理系统可以调用 KMS 保护保存的秘密，但“轮换加密密钥”不会自动更换其中保存的 API Key。
+
+Secret 被授权交付给应用后，仍需保护运行内存、日志和发送目的地。完整职责对比见 [[生产安全五件套：KMS、Secret、IAM、配置管理与Egress授权]]。
+
+本补充于 2026-10-04 核对：[AWS Secrets Manager 与 KMS 的配合](https://docs.aws.amazon.com/secretsmanager/latest/userguide/best-practices.html)。
 
 ## HSM
 
