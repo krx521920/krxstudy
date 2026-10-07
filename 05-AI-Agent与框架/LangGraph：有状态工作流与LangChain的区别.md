@@ -13,7 +13,7 @@ tags:
   - 工作流
   - 状态管理
 created: 2026-09-16
-updated: 2026-09-17
+updated: 2026-10-07
 verified: 2026-09-17
 ---
 
@@ -285,6 +285,8 @@ LinkedIn Hiring Assistant、Klarna AI Assistant 和 Replit Agent 的历史公开
 先学会一次模型调用和一个普通函数工具，再理解 [[ReAct：推理、行动与观察的Agent模式]]。接着用 [[LangChain]] 组织简单助手；出现具体的流程控制需求后，再学习 LangGraph 的状态、节点、边和恢复机制。
 
 关联阅读：[[Prompt Engineering与Loop Engineering]]、[[状态机与幂等性]]、[[Agent Harness：模型之外的运行系统]]、[[Dify：可视化AI应用、知识库与工作流平台]]。
+
+2026-10-07 补充：[[Agent可靠性术语辨析：上下文、状态、反馈、路由与记忆]] 用同一案例解释如何防止漏条件、跳步骤和误判完成，并说明 DAG 不等于所有工作流、流程节点不一定是独立 Agent。
 
 ## 参考资料
 
