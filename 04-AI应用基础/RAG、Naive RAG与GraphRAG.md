@@ -13,7 +13,7 @@ tags:
   - 检索
   - 知识图谱
 created: 2026-08-16
-updated: 2026-10-01
+updated: 2026-10-26
 verified: 2026-08-17
 ---
 
@@ -184,6 +184,8 @@ Naive RAG 之后的常见增强包括：
 - Context compression：只保留真正相关的句子；
 - Answer verification：检查答案是否有来源支持；
 - Iterative/Agentic RAG：Agent 判断是否需要继续检索或换一种查询。
+
+2026-10-26 补充：[[BM25、关键词检索与混合检索|BM25]] 可以为关键词检索结果打分，与向量检索结合形成混合检索。RAG 的核心是检索后生成，不要求每套实现都先生成查询向量；上面的向量化流程是一种常见实现，而不是所有 RAG 的必要步骤。
 
 [[LangChain]] 官方文档将常见架构概括为固定的 2-Step RAG、由 Agent 决定检索时机的 Agentic RAG，以及带查询和答案验证的 Hybrid RAG。
 
