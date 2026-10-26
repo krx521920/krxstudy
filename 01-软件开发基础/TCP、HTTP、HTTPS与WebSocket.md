@@ -13,7 +13,7 @@ tags:
   - HTTP
   - WebSocket
 created: 2026-08-16
-updated: 2026-08-16
+updated: 2026-10-27
 verified: 2026-08-16
 ---
 
@@ -59,6 +59,8 @@ flowchart TD
 - HTTPS 通常表示 HTTP 受到 TLS 保护；
 - HTTP/3 使用 QUIC（建立在 UDP 之上），不是传统 TCP；
 - WebSocket 的常见 `ws`/`wss` 实现通常使用 TCP，`wss` 还加 TLS。
+
+2026-10-27 补充：图中的 IP 可以是 [[IPv4与IPv6：地址、双栈与联网区别|IPv4 或 IPv6]]；它们负责网络层寻址与转发，不是 TCP 或 HTTP 的替代品。地址变为 IPv6，也不意味着应用数据自动加密或网速必然提升。
 
 ## TCP 详细解释
 
