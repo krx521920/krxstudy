@@ -13,7 +13,7 @@ tags:
   - 量化
   - KV-Cache
 created: 2026-08-30
-updated: 2026-08-30
+updated: 2026-10-31
 ---
 
 # 大模型推理加速：FP8、量化、KV Cache与多Token预测
@@ -178,6 +178,8 @@ flowchart LR
 MTP 可以帮助同一模型产生草稿候选，但“多 Token 预测”和“推测解码”不是完全同义词。
 
 ## 九、其他重要但容易漏掉的加速
+
+2026-10-31 延伸：[[rLLM与vLLM：强化学习训练和模型推理的区别#三、vLLM 是做什么的|vLLM 的连续批处理与 PagedAttention]]，用服务调度与缓存管理的例子理解下列技术，区分推理效率优化和模型训练。
 
 - Batching/Continuous Batching：把多个请求组合，动态加入和移出批次，提高吞吐。
 - Tensor/Expert/Pipeline Parallelism：把权重、专家或层分布到多设备。
