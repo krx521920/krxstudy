@@ -6,6 +6,7 @@ aliases:
   - rLLM与vLLM区别
   - rLLM与Ollama
   - vLLM与Ollama
+  - vLLM与Ollama选型
 tags:
   - AI
   - AI-Agent
@@ -129,6 +130,98 @@ vLLM 是面向模型推理和服务的软件，帮助应用高效运行受支持
 
 Ollama 还支持云端模型；使用哪种工具并不能单独决定数据是否出内网，必须看模型和工具的实际部署地址。详见 [[Ollama：本地模型运行、模型管理与云端调用]]。
 
+### vLLM 与 Ollama：具体区别与选型
+
+> [!summary] 先按目标选择
+> 在自己的电脑上学习、体验模型、做个人知识库，通常先用 Ollama；要自行搭建长期运行的模型服务，重点优化大量请求、批量任务或多设备推理时，把 vLLM 作为重点评估对象。决定因素是实际负载与维护成本，不是“个人必须 Ollama、企业必须 vLLM”。
+
+本节于 2026-10-31 增补。下面主要比较两者运行**自部署模型**的情况；Ollama Cloud 使用云服务商算力，不能直接拿来和另一台本地电脑比较速度。
+
+#### 1. 两者都能运行模型，封装和使用重点不同
+
+生活类比：Ollama 更像把选模型、下载、启动和交互整理好的使用工具；vLLM 更像可供开发者调度和优化的模型服务引擎。
+
+| 维度 | Ollama | vLLM |
+| --- | --- | --- |
+| 主要体验 | 用应用或简单命令获取、管理和运行模型 | 用 Python 程序或服务命令组织推理 |
+| 安装与配置 | 桌面安装与模型管理较集中，初学者通常更容易开始 | 需要更多关注 Python 环境、硬件后端、模型配置和服务参数 |
+| Windows | 有官方原生应用，可在 PowerShell 等终端使用 | 当前官方 GPU 安装文档不支持原生 Windows；可使用兼容的 Linux 环境，例如 WSL |
+| 运行模型 | 按模型名称或标签管理，便于下载、查看和切换 | 常指定受支持的模型仓库或本地权重路径，配置服务使用的模型 |
+| 并发能力 | 支持并发请求、多模型加载及多 GPU 使用，取决于资源与配置 | 重点提供批处理、缓存管理、调度与分布式推理能力 |
+| 接入其他软件 | 提供自身 API 和部分兼容接口 | 提供在线推理接口，也能在程序中进行批量推理 |
+| 扩展与运维 | 小规模场景可以较少配置开始，规模扩大后仍要做资源与服务治理 | 更适合深入调优服务吞吐、设备并行、监控与部署拓扑 |
+| 回答质量 | 取决于模型、精度、模板、上下文与生成设置 | 同样取决于模型与配置，不会因为换了引擎就自动更聪明 |
+
+**WSL = Windows Subsystem for Linux，适用于 Linux 的 Windows 子系统，逐字母读 W-S-L。**它让 Windows 上可以使用 Linux 环境，但硬件驱动和加速后端仍需兼容。vLLM 的不同硬件有对应安装路径，不能把它理解成只支持一种显卡。[Ollama Windows 文档](https://docs.ollama.com/windows)、[vLLM GPU 安装说明](https://docs.vllm.ai/en/latest/getting_started/installation/gpu/)
+
+Ollama 官方文档明确提供并发、多模型与多 GPU 的说明；vLLM 官方文档则介绍了单机、多 GPU 和多节点推理。**有多 GPU 支持，不等于各种多节点部署方式都相同；并发能力也不等于无限容量。**[Ollama 并发说明](https://docs.ollama.com/faq#how-does-ollama-handle-concurrent-requests)、[vLLM 并行与扩展](https://docs.vllm.ai/en/latest/serving/parallelism_scaling/)
+
+#### 2. 为什么不能直接说“vLLM 一定更快”
+
+“快”至少包括三种不同感受：
+
+- **首个输出等待时间**：发出问题后，多久开始出现内容。常用 TTFT（Time to First Token，首 Token 延迟）衡量。
+- **完整响应时间**：从请求发出到整段答案生成完用了多久。
+- **吞吐量**：单位时间完成多少请求，或生成多少 Token。
+
+一个人偶尔问一句话，与很多请求持续排队，需要优化的目标不同。还有一种情况是只有一个使用者，却要批量处理几万条文本，此时同样可能看重吞吐量。
+
+vLLM 的调度与并行能力使它值得在持续高负载场景中评估，但不能承诺在所有硬件、模型和请求长度下都更快。Ollama 若已经达到目标响应时间，就没有因为“听起来不够专业”而必须迁移的理由。
+
+做对比时，要尽量对齐：
+
+1. 模型的具体版本和权重，不能只看名字相似。
+2. 量化精度、聊天模板、上下文上限与生成参数。
+3. 同一硬件以及其他程序占用情况。
+4. 相同的输入内容、输出长度和请求到达节奏。
+5. 模型已加载的运行表现与首次加载的等待时间。
+6. 输出正确性、延迟、吞吐、内存占用与失败率。
+
+vLLM 提供首 Token 延迟、排队时间、整体请求耗时等指标，可用于实际观测。[vLLM 服务指标](https://docs.vllm.ai/en/latest/usage/metrics/)
+
+#### 3. 具体场景怎样选
+
+| 你的实际情况 | 优先考虑 | 判断依据 |
+| --- | --- | --- |
+| 在 Windows 电脑上学习本地模型、自己聊天或试不同模型 | Ollama | 先降低安装、获取模型与交互的门槛 |
+| 做个人 Obsidian 问答、小型知识库原型 | Ollama 起步 | 先验证资料检索和回答质量，随后观察响应是否满足需求 |
+| 几位同事偶尔调用内部模型，现有服务速度够用 | 可以继续使用 Ollama | 团队使用不自动意味着必须换引擎 |
+| 自部署客服或内部模型接口，持续排队、请求量高 | 重点评估 vLLM | 测试批处理、缓存和调度能否改善实际吞吐与延迟 |
+| 一个人批量处理大量文档、生成数据或离线分析 | vLLM 值得评估 | 用户人数少，但计算负载可能很大；vLLM 支持离线批量推理 |
+| 大模型需要多张显卡、多台机器共同推理 | 重点评估 vLLM | 按模型和硬件核对并行、通信与部署方式 |
+| 只调用第三方云模型接口，不自行运行权重 | 可能两者都不需要 | 应用可以直接使用所选服务的接口 |
+| 没有适合目标模型的本地计算资源 | 先评估更小模型或远程算力 | 更换软件不会凭空增加内存或计算能力 |
+
+以上是基于工具定位的工程建议，不是未经测试的性能排名。离线批量推理与在线服务的用法可见 [vLLM 快速入门](https://docs.vllm.ai/en/latest/getting_started/quickstart/)。
+
+**没有“超过十个人必须换 vLLM”的通用分界线。**十个人偶尔提问，可能比一个不断读长文档、调用模型多轮的智能体更轻。应看同时在处理多少请求、每次有多长、能接受等多久。
+
+对当前以 Windows 桌面学习和个人笔记为主的使用场景，可以先用 Ollama 理解模型运行与接口。这里没有核查本机显卡、内存或运行基准，因此不据此指定能流畅运行的具体型号。
+
+#### 4. 接入 Dify、知识库或智能体时怎么理解
+
+两者都可以承担应用背后的模型调用服务，整体关系可以是：
+
+```text
+用户 → 业务应用／知识库／智能体 → 模型接口 → Ollama 或 vLLM → 模型计算
+```
+
+**API = Application Programming Interface，应用程序编程接口，逐字母读 A-P-I。**接口让应用把输入交给模型服务，再读取结果。两者都提供部分常见接口兼容能力，但兼容不等于每个参数、功能和行为完全一致。[Ollama 接口兼容说明](https://docs.ollama.com/api/openai-compatibility)、[vLLM 在线服务说明](https://docs.vllm.ai/en/latest/serving/online_serving/)
+
+同一个客服应用可以更换推理服务，而用户仍然使用原来的网页。但程序仍需验证：模型名称、接口路径、流式输出、工具调用、结构化结果、超时和错误处理是否一致。服务地址与模型设置最好集中配置，便于替换。
+
+模型引擎不会自动替你完成文档检索、订单权限判断或可靠的多步任务。知识库与业务流程仍由应用组织，详见 [[协议适配与任务适配：接通接口和完成业务]]、[[RAG、Naive RAG与GraphRAG]]。
+
+#### 5. 从 Ollama 迁移到 vLLM 前准备什么
+
+1. **先确定迁移目标**：例如减少排队、提高批量处理速度，或支持特定模型和多设备部署。
+2. **记录现状**：保存模型版本、精度、提示词模板、上下文限制和一组典型请求，以及当前响应表现。
+3. **核对运行条件**：目标模型、量化方式、硬件和操作系统是否被支持；模型在磁盘上能放下不等于推理内存足够。
+4. **准备调用适配**：调整地址与模型标识，验证实际用到的接口行为，不只检查能否返回一句“你好”。
+5. **以真实任务比较**：检查质量、长输入、多请求、失败处理和资源消耗，再判断收益是否值得维护成本。
+
+两者用于正式服务时，都还要安排访问认证、请求限制、日志与故障处理。不要把“模型接口已启动”当成整个业务系统已经完成。
+
 ## 五、rLLM 与 vLLM 可以一起用吗
 
 可以。训练过程中，模型需要先尝试回答或行动，才能得到反馈。因此，训练系统内部也需要推理。
@@ -190,3 +283,11 @@ rLLM 当前官方仓库的 `verl` 后端安装说明就提到了 vLLM/SGLang 组
 - [Efficient Memory Management for Large Language Model Serving with PagedAttention](https://arxiv.org/abs/2309.06180)
 - [vLLM 原始技术介绍](https://vllm.ai/blog/2023-06-20-vllm)
 - [relationLLM 同名项目文档](https://relationllm.readthedocs.io/en/latest/)
+- [Ollama：Windows 原生应用](https://docs.ollama.com/windows)
+- [Ollama：并发、多模型与多 GPU](https://docs.ollama.com/faq)
+- [Ollama：接口兼容范围](https://docs.ollama.com/api/openai-compatibility)
+- [vLLM：安装与平台要求](https://docs.vllm.ai/en/latest/getting_started/installation/gpu/)
+- [vLLM：批量推理与在线服务入门](https://docs.vllm.ai/en/latest/getting_started/quickstart/)
+- [vLLM：并行与多节点扩展](https://docs.vllm.ai/en/latest/serving/parallelism_scaling/)
+- [vLLM：在线服务与接口](https://docs.vllm.ai/en/latest/serving/online_serving/)
+- [vLLM：服务指标](https://docs.vllm.ai/en/latest/usage/metrics/)
