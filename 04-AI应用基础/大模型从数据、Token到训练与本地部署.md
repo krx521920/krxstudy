@@ -3,6 +3,8 @@ title: 大模型从数据、Token到训练与本地部署
 aliases:
   - 大模型怎么训练
   - Token从哪里来
+  - 占用大量令牌
+  - Token占用与消耗
   - 本地大模型
   - 本地模型部署
   - 本地推理与本地训练
@@ -13,7 +15,7 @@ tags:
   - 预训练
   - 本地部署
 created: 2026-09-01
-updated: 2026-09-01
+updated: 2026-10-31
 verified: 2026-09-01
 ---
 
@@ -170,6 +172,72 @@ Tokenizer 通常先在一批代表性语料上训练或设计一个 Vocabulary�
 | Token 用量/额度 | 输入和输出 LLM Token 的计费统计 | 平台按 Tokenizer 结果计算 |
 
 本笔记后面说的“14.8 万亿 Token”指第一种训练序列单位，不是 14.8 万亿个 API 密钥。
+
+### “占用大量令牌”是什么意思
+
+2026-10-31 补充核对。这里按大模型语境解释“占用大量令牌”：**某段内容被编码后包含很多 Token，或一个任务经过多次模型调用，累计处理／生成了很多 Token。**Token 是英文单词，不是缩写，常译为“词元、标记、令牌”，读音近似“偷肯”；它不是内存字节，也不是访问凭证。
+
+对文字来说，Tokenizer（分词器／标记器）把内容编码成模型处理的序列单位。一个单位可能对应一个字、词的一部分、标点或字节片段；不能固定按“一个汉字就是一个 Token”换算。同一段文字在不同模型的分词器下数量也可能不同。[Hugging Face：分词算法](https://huggingface.co/docs/transformers/tokenizer_summary)
+
+生活类比：上下文像本次考试允许带入的资料，Token 是衡量这些资料长度的一种刻度。带了很长的附件，就占去较多可用篇幅；这不是账户里存在一堆被文件永久锁住的“令牌币”。
+
+#### 先分清四种数字
+
+| 看到的说法 | 通常指什么 | 不能直接推断什么 |
+|---|---|---|
+| 某文件“占了两万 Token” | 文件实际进入模型的部分，在相应编码下很长 | 不是文件有两万个汉字，也不是占了两万字节内存 |
+| 上下文占用很高 | 一次请求中的内容接近可处理容量 | 不等于账户额度快用完 |
+| 任务“消耗十万 Token” | 多次调用中某种口径的累计用量 | 不等于某一次请求同时装进了十万 Token |
+| Token 费用或剩余额度 | 平台按输入、输出、缓存等类别计费或限额 | 不等于上下文剩余容量或本机剩余内存 |
+
+Input Tokens（输入词元）来自模型本次接收的内容，Output Tokens（输出词元）来自本次生成。Context Window（上下文窗口）是模型一次处理的容量约束；常见生成式模型需要为输入和生成内容共同安排空间，输出还可能有单独上限。推理内容、多模态内容和历史内容的具体计算方式应看所用模型及接口文档，不能把可见回答字数当成全部用量。[Claude：上下文窗口及用量类别](https://platform.claude.com/docs/en/build-with-claude/context-windows)
+
+#### 为什么只问一句话，却用了很多 Token
+
+应用真正发给模型的内容，可能除了当前问题，还包含：系统和任务规则、对话历史、文档摘录、工具说明、工具执行结果和必要的消息封装。这是一般组成说明，不是当前会话的精确用量清单。
+
+教学例子：假设某次输入由以下部分构成，数量均为人为设定，不是实测分词结果：
+
+```text
+规则与说明：     2,000 Token
+对话历史：       3,000 Token
+读入的资料：    20,000 Token
+当前问题：          20 Token
+输入合计：      25,020 Token
+```
+
+如果这次又生成 1,000 个输出 Token，则简化统计中的输入加输出为 26,020 个。**问题本身很短，不代表模型实际接收的内容很短。**这里没有模拟全部产品封装或额外推理用量。
+
+需要特别区分：文件保存在硬盘、知识库或仓库里，不代表全文自动进入模型。只有检索、读取或产品处理后实际送入请求的内容才构成相应输入；工具的原始返回、截断后返回和模型实际收到的内容，也不一定完全相同。不能仅看文件大小推断准确 Token 数。
+
+Agent（智能体，读音近似“诶颈特”）可能多次调用模型，并将历史和工具结果继续带入。假设三次输入分别是 10,000、12,000、14,000 个 Token，逻辑输入累计为 36,000 个，但第三次输入本身仍是 14,000 个；费用还要结合缓存等分类，不能把 36,000 直接全按未缓存输入收费。[Anthropic：上下文工程与循环中的信息管理](https://www.anthropic.com/research/effective-context-engineering-for-ai-agents)
+
+#### 为什么大家关心占用：容量、费用、速度与质量
+
+- **容量**：输入太长可能无法留下足够输出空间；产品可能报超限、压缩或截断，具体行为不统一。
+- **费用与额度**：按量付费的模型服务常区分输入、输出及缓存用量，单价也可能不同；订阅产品的额度不一定等于一个固定 Token 余额。本节不提供具体产品价格。
+- **速度**：更长的输入和更多生成通常意味着更多处理工作，但缓存、模型架构、硬件与排队也影响响应速度，不存在固定的“Token 翻倍，耗时必然翻倍”。
+- **效果**：大量重复或无关材料可能增加筛选信息的难度；不是材料越多一定越好，也不是 Token 越少一定更准确。
+
+Prompt Caching（提示词缓存）可以复用符合条件的前缀计算，降低重复处理成本；**缓存命中不等于把那段内容从上下文里删除，也不等于免费**。例如 Claude 的缓存读取、缓存创建与未缓存输入都参与其窗口统计，但计费类别不同；其他服务以对应文档为准。[Claude：提示词缓存](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)
+
+#### 与 OOM 有什么关系
+
+**Token 是序列计数，OOM = Out of Memory（内存不足，读 O-O-M）是资源分配问题，不能画等号。**
+
+在常见使用完整历史键值缓存的 Transformer 推理中，上下文变长通常会增加 **KV Cache = Key-Value Cache（键值缓存，读 K-V cache）**等内存开销，因而可能增加本地运行的显存压力。但每个 Token 的资源开销取决于模型、精度、缓存和并发等实现，不存在通用的“一个 Token 等于多少 MB”。[Hugging Face：KV 缓存如何工作](https://huggingface.co/docs/transformers/cache_explanation)
+
+超过模型接口允许的上下文长度，可能直接被拒绝，不代表机器已经 OOM；反过来，在模型允许的长度以内，也可能因设备资源或并发不足而 OOM。使用云端模型时，主要推理资源在服务端，并不意味着用户电脑承载了全部推理内存，见 [[OOM：内存不足、显存不足与内存泄漏]]。
+
+#### 日常怎样减少无用占用
+
+1. 读资料时先检索、定位，再读取有关段落，而不是每次塞入整本资料。
+2. 工具返回与问题有关的字段和结果，避免无关日志、重复文档不断累积。
+3. 长任务保留目标、已完成结果、关键约束及原文位置，再对旧历史做有依据的摘要；摘要也可能丢失细节。
+4. 按任务加载工具和说明，但不要为了省 Token 删除必要的安全、权限或验收要求。
+5. 真正比较用量时，查看平台返回的用量字段或模型匹配的分词器，区分单次窗口占用与累计用量；不要只按中文字数估算。
+
+更完整的 Agent 上下文组成和评测口径，见 [[Agent评测：上下文成本、轨迹与独立验收]]。本次没有统计当前会话的真实 Token 用量，也没有修改模型额度或上下文设置。
 
 ## 五、Token、Token ID、Embedding 的关系
 
@@ -428,6 +496,13 @@ Token查词表变成ID，ID再变成向量
 
 以下内容于 2026-09-01 核对。具体 API、模型版本、许可和本地运行方式可能变化，部署时应重新查看当前官方文档。
 
+2026-10-31 单独增补核对了“占用大量令牌”、单次上下文与累计用量、缓存及 OOM 的关系；原有模型训练与部署资料仍以上述日期为准。
+
+- [Hugging Face：Tokenization algorithms](https://huggingface.co/docs/transformers/tokenizer_summary)
+- [Anthropic：Effective context engineering for AI agents](https://www.anthropic.com/research/effective-context-engineering-for-ai-agents)
+- [Claude：Context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows)
+- [Claude：Prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)
+- [Hugging Face：How caching works](https://huggingface.co/docs/transformers/cache_explanation)
 - [DeepSeek Chat Completions API 官方文档](https://api-docs.deepseek.com/api/create-chat-completion/)
 - [DeepSeek-V3 官方 GitHub 仓库与本地运行说明](https://github.com/deepseek-ai/DeepSeek-V3)
 - [DeepSeek-V3 Technical Report](https://arxiv.org/abs/2412.19437)
