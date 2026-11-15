@@ -10,7 +10,7 @@ tags:
   - 自动化
   - 工程化
 created: 2026-08-16
-updated: 2026-08-16
+updated: 2026-11-15
 verified: 2026-08-16
 ---
 
@@ -160,6 +160,10 @@ Git Hook 属于 Git。GitHub Actions、GitLab CI 等是远程平台提供的自�
 - [[Node.js与pnpm]]：前端和 Node.js 项目中，Hook 经常调用 pnpm 脚本。
 - [[CMD、Bash与PowerShell]]：Hook 文件需要由某种命令解释器执行。
 - [[SDK与API|API]]：服务器端自动化平台通常也通过 API 与 Git 托管服务交流。
+
+## 持续集成与测试流水线
+
+2026-11-15 补充：Jenkins 和 GitLab CI/CD 可在执行节点上运行构建与测试，记录对应提交、结果和制品。它们不同于只在本地触发的 Git Hook；本地检查通过也不能替代远端指定版本的验证。详见 [[持续集成测试：Jenkins、GitLab CI与版本回滚]]，含流水线、失败门禁、分片、精准测试、SVN 与回滚边界。
 
 ## 参考资料
 

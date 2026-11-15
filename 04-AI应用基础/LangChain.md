@@ -8,7 +8,7 @@ tags:
   - Agent
   - 框架
 created: 2026-08-16
-updated: 2026-09-16
+updated: 2026-11-15
 verified: 2026-08-17
 ---
 
@@ -186,6 +186,10 @@ Flowise 的公开代码，以及 Remote 工程师披露的数据导入智能体�
 - [[SDK与API]]：LangChain 常通过模型 SDK 或 Web API 访问模型服务。
 - [[Prompt Engineering与Loop Engineering]]：LangChain 可承载 Prompt 和 Agent loop，但不会自动保证循环可靠。
 - [[RAG、Naive RAG与GraphRAG]]：LangChain 提供构建检索流程的组件，RAG 是具体方法。
+
+## LangSmith 的追踪和评测实践
+
+2026-11-15 补充：追踪用于观察一轮运行中真实的模型请求、检索、工具与耗时；评测则将输出/最终状态与明确标准比较。可把一次失败轨迹转成数据集样本，再对多个版本运行实验，查看逐题变化。使用 LangSmith 不要求整个应用都由 LangChain 编排，也不能仅凭接入追踪就说质量已验证。完整流程见 [[Agent评测：上下文成本、轨迹与独立验收]]。
 
 ## 参考资料
 

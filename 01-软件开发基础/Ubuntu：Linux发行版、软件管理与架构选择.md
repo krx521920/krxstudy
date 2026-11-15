@@ -3,7 +3,7 @@ title: Ubuntu：Linux 发行版、软件管理与架构选择
 aliases: [Ubuntu, 乌班图, Ubuntu入门, Ubuntu与Linux, Ubuntu的amd64与arm64]
 tags: [操作系统, Linux, Ubuntu, 软件开发基础]
 created: 2026-09-08
-updated: 2026-09-08
+updated: 2026-11-15
 verified: 2026-09-08
 ---
 
@@ -199,6 +199,27 @@ cat /etc/os-release
 **虚拟机、容器或仿真环境中的输出不一定等于底层实体宿主机的全部信息。** 特别是内核架构与用户空间包架构可能处于不同兼容安排中，要结合运行方式判断。
 
 这些命令在本次笔记中作为语义示例，没有声称已在用户电脑的 Ubuntu 中执行，也没有据此判断用户当前处理器型号。
+
+## Ubuntu、RHEL 与 CentOS 应该怎样比较
+
+2026-11-15 补充。**Linux 是内核，不同发行版在软件包、默认配置、更新与支持体系上不同。**测试人员需要知道自己面对哪一套环境，而不是把所有 Linux 命令教程机械混用。
+
+RHEL = Red Hat Enterprise Linux，红帽企业 Linux，逐字母读 R-H-E-L。Red Hat 是公司名；RHEL 是其企业发行版。Ubuntu 由 Canonical 等生态维护，基础来自 Debian 系。
+
+| 方面 | Ubuntu/Debian 系 | RHEL/CentOS Stream 等生态 |
+|---|---|---|
+| 常见包格式 | deb | rpm |
+| 常见包管理 | apt/dpkg | dnf/rpm，旧环境常见 yum |
+| 需要核对 | 版本、软件源、依赖、支持期 | 同样需要核对，不能只看发行版家族 |
+| 共通知识 | 文件、进程、权限、网络、Shell 等 Linux 基础 | 同左，但包名、默认策略和路径可能不同 |
+
+**CentOS Linux 与 CentOS Stream 不是同一个发布模型。**CentOS Linux 的旧路线已结束；官方列明 CentOS Linux 7 于 2024-06-30 结束生命周期。CentOS Stream 是面向下一批 RHEL 更新的持续交付开发分支，不能简单叫成“旧 CentOS 的新版本号”。[CentOS 官方比较](https://www.centos.org/cl-vs-cs/)、[生命周期说明](https://www.centos.org/centos-linux/)
+
+不要因为旧教程使用 CentOS 7，就在新项目照装已结束维护的环境。企业实际选择还要考虑支持合同、应用认证、更新策略和团队运维能力，不能仅以“哪个免费”决定。
+
+测试跨发行版软件时，核对 CPU 架构、运行库、包版本、服务管理、权限、安全策略、文件路径和时区。相同应用版本在两套环境跑通，才有对应兼容证据。
+
+实践可先只读查看 `/etc/os-release` 和运行库/架构；资源工具与命令排障见 [[测试环境排障：Linux命令、资源监控与远程终端]]。
 
 ## 十一、常见误区
 
